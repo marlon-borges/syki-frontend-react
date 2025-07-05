@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@ark-ui/react": "^5.16.0",
+    "@tabler/icons-react": "^3.34.0",
     "@tanstack/react-query": "^5.81.5",
     "axios": "^1.10.0",
     "react": "^19.1.0",
