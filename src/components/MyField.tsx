@@ -1,0 +1,143 @@
+import { Show } from '@/components/Show';
+import {
+  Field,
+  type FieldErrorTextProps,
+  type FieldHelperTextProps,
+  type FieldInputProps,
+  type FieldLabelProps,
+  type FieldRootProps,
+} from '@ark-ui/react';
+import type { TablerIcon } from '@tabler/icons-react';
+import { cva } from 'class-variance-authority';
+import { twMerge } from 'tailwind-merge';
+
+function Root(props: FieldRootProps) {
+  return <Field.Root {...props} className={twMerge('flex flex-col gap-1.5', props.className)} />;
+}
+
+function Label(props: FieldLabelProps) {
+  return (
+    <Field.Label
+      {...props}
+      className={twMerge('dark:text-normal-dark text-sm font-medium text-normal', props.className)}
+    >
+      {props.children}
+    </Field.Label>
+  );
+}
+
+interface InputProps extends FieldInputProps {
+  icon?: TablerIcon;
+  sizes?: 'small' | 'default' | 'large';
+}
+
+function Input(props: InputProps) {
+  const inputCva = cva(
+    [
+      'placeholder:text-low border-bd_neutral_primary rounded-lg border text-sm focus:border-neutral-600 focus:ring-2 focus:ring-neutral-200 focus:ring-offset-2 focus:ring-offset-bg_primary focus:outline-none',
+    ],
+    {
+      variants: {
+        state: {
+          default: 'bg-bg_primary text-normal',
+          disabled: 'bg-bg_primary text-disabled cursor-default placeholder:text-disabled',
+          error:
+            'bg-red-50 border-bd_error text-action-error focus:border-bd_error focus:ring-red-200',
+        },
+        size: {
+          small: 'h-8 px-2.5 py-1.5',
+          default: 'h-9 px-3 py-2',
+          large: 'h-10 px-3 py-2.5',
+        },
+        hasIcon: {
+          true: 'pl-10 pr-3',
+          false: '',
+        },
+      },
+      defaultVariants: {
+        state: 'default',
+        size: 'default',
+      },
+    },
+  );
+
+  const iconCva = cva('pointer-events-none absolute top-1/2 left-3 -translate-y-1/2', {
+    variants: {
+      state: {
+        default: 'text-normal',
+        disabled: 'text-disabled',
+        error: 'text-action-error',
+      },
+    },
+  });
+
+  return (
+    <div className="relative">
+      <Field.Context>
+        {context => {
+          const state = () =>
+            context.invalid ? 'error' : context.disabled ? 'disabled' : 'default';
+
+          return (
+            <>
+              <Show when={props.icon}>
+                {props.icon && (
+                  <props.icon
+                    stroke="2.25"
+                    className={twMerge(
+                      iconCva({
+                        state: state(),
+                      }),
+                    )}
+                    size={18}
+                  />
+                )}
+              </Show>
+              <Field.Input
+                {...props}
+                className={twMerge(
+                  'w-full',
+                  inputCva({
+                    state: state(),
+                    size: props.sizes,
+                    hasIcon: !!props.icon,
+                  }),
+                  props.className,
+                )}
+              />
+            </>
+          );
+        }}
+      </Field.Context>
+    </div>
+  );
+}
+
+function HelperText(props: FieldHelperTextProps) {
+  return (
+    <Field.HelperText {...props} className={twMerge('text-xs text-low', props.className)}>
+      {props.children}
+    </Field.HelperText>
+  );
+}
+
+function ErrorText(props: FieldErrorTextProps) {
+  return (
+    <Field.ErrorText {...props} className={twMerge('text-xs text-action-error', props.className)}>
+      {props.children}
+    </Field.ErrorText>
+  );
+}
+
+export const MyField = {
+  /** Container principal */
+  Root,
+  /** Label do campo */
+  Label,
+  /** Campo de texto */
+  Input,
+  /** Texto auxiliar */
+  HelperText,
+  /** Texto de erro */
+  ErrorText,
+} as const;
