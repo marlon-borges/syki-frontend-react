@@ -1,1 +1,341 @@
 @import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-body: 'Pretendard', 'sans-serif';
+  --font-display: 'InterDisplay', 'sans-serif';
+
+  /* Light */
+  --color-blue-50: #ebf1ff;
+  --color-blue-100: #d5e2ff;
+  --color-blue-200: #c0d5ff;
+  --color-blue-300: #97baff;
+  --color-blue-400: #6895ff;
+  --color-blue-500: #335cff;
+  --color-blue-600: #3559e9;
+  --color-blue-700: #2547d0;
+  --color-blue-800: #1f3bad;
+  --color-blue-900: #182f8b;
+  --color-blue-950: #122368;
+
+  --color-green-50: #f5faf4;
+  --color-green-100: #e4f4e3;
+  --color-green-200: #cce7cc;
+  --color-green-300: #94ce94;
+  --color-green-400: #70b772;
+  --color-green-500: #49a949;
+  --color-green-600: #3d883c;
+  --color-green-700: #30662e;
+  --color-green-800: #295129;
+  --color-green-900: #224221;
+  --color-green-950: #0e2313;
+
+  --color-neutral-50: #f7fafc;
+  --color-neutral-100: #f2f5f8;
+  --color-neutral-200: #e1e5e9;
+  --color-neutral-300: #cad0d8;
+  --color-neutral-400: #99a2ad;
+  --color-neutral-500: #717984;
+  --color-neutral-600: #525a66;
+  --color-neutral-700: #2b323b;
+  --color-neutral-800: #222830;
+  --color-neutral-900: #181d25;
+  --color-neutral-950: #0e131b;
+
+  --color-orange-50: #fff3eb;
+  --color-orange-100: #ffe6d5;
+  --color-orange-200: #ffd9c0;
+  --color-orange-300: #ffc197;
+  --color-orange-400: #ffa468;
+  --color-orange-500: #fa7319;
+  --color-orange-600: #e16614;
+  --color-orange-700: #ce5e12;
+  --color-orange-800: #b75310;
+  --color-orange-900: #96440d;
+  --color-orange-950: #71330a;
+
+  --color-purple-primary-50: #efebff;
+  --color-purple-primary-100: #dcd5ff;
+  --color-purple-primary-200: #cac0ff;
+  --color-purple-primary-300: #a897ff;
+  --color-purple-primary-400: #8c71f6;
+  --color-purple-primary-500: #7d52f4;
+  --color-purple-primary-600: #693ee0;
+  --color-purple-primary-700: #5b2cc9;
+  --color-purple-primary-800: #4c25a7;
+  --color-purple-primary-900: #3d1d86;
+  --color-purple-primary-950: #351a75;
+
+  --color-red-50: #fff3f1;
+  --color-red-100: #fde4dd;
+  --color-red-200: #ffcdc5;
+  --color-red-300: #ffab9e;
+  --color-red-400: #fd7a64;
+  --color-red-500: #fe4f33;
+  --color-red-600: #e52c12;
+  --color-red-700: #c8260d;
+  --color-red-800: #a62310;
+  --color-red-900: #892314;
+  --color-red-950: #4b0d04;
+
+  --color-low: #99a2ad;
+  --color-normal: #525a66;
+  --color-high: #0e131b;
+  --color-disabled: #cad0d8;
+
+  --color-action-error: var(--color-red-600);
+  --color-action-primary: var(--color-purple-primary-500);
+  --color-action-info: var(--color-blue-600);
+  --color-action-warning: var(--color-orange-600);
+  --color-action-success: var(--color-green-600);
+
+  --color-bg_primary: #ffffff;
+  --color-bg_secondary: #f5f9fa;
+  --color-bg_tertiary: #f2f6f8;
+
+  --color-bd_neutral_primary: #e1e7e9;
+  --color-bd_neutral_secondary: #f2f6f8;
+  --color-bd_neutral_tertiary: #f5f9fa;
+
+  --color-bd_error: var(--color-red-500);
+  --color-bd_primary: var(--color-purple-primary-500);
+  --color-bd_info: var(--color-blue-500);
+  --color-bd_warning: var(--color-orange-500);
+  --color-bd_success: var(--color-green-500);
+}
+
+.dark {
+  --color-blue-50: #122368;
+  --color-blue-100: #182f8b;
+  --color-blue-200: #1f3bad;
+  --color-blue-300: #2547d0;
+  --color-blue-400: #3559e9;
+  --color-blue-500: #335cff;
+  --color-blue-600: #6895ff;
+  --color-blue-700: #97baff;
+  --color-blue-800: #c0d5ff;
+  --color-blue-900: #d5e2ff;
+  --color-blue-950: #ebf1ff;
+
+  --color-green-50: #0e2313;
+  --color-green-100: #224221;
+  --color-green-200: #295129;
+  --color-green-300: #30662e;
+  --color-green-400: #3d883c;
+  --color-green-500: #49a949;
+  --color-green-600: #70b772;
+  --color-green-700: #94ce94;
+  --color-green-800: #cce7cc;
+  --color-green-900: #e4f4e3;
+  --color-green-950: #f5faf4;
+
+  --color-neutral-50: #151417;
+  --color-neutral-100: #1a191c;
+  --color-neutral-200: #232226;
+  --color-neutral-300: #2f2d33;
+  --color-neutral-400: #55535c;
+  --color-neutral-500: #7e7b87;
+  --color-neutral-600: #9996a3;
+  --color-neutral-700: #c6c2d1;
+  --color-neutral-800: #e1ddeb;
+  --color-neutral-900: #ece9f5;
+  --color-neutral-950: #f3f2f7;
+
+  --color-orange-50: #422411;
+  --color-orange-100: #8f4f24;
+  --color-orange-200: #b76228;
+  --color-orange-300: #ce702f;
+  --color-orange-400: #e17229;
+  --color-orange-500: #fa7319;
+  --color-orange-600: #ffa468;
+  --color-orange-700: #ffc197;
+  --color-orange-800: #ffd9c0;
+  --color-orange-900: #ffe6d5;
+  --color-orange-950: #fff3eb;
+
+  --color-purple-primary-50: #251748;
+  --color-purple-primary-100: #452886;
+  --color-purple-primary-200: #5430a7;
+  --color-purple-primary-300: #653ac9;
+  --color-purple-primary-400: #693ee0;
+  --color-purple-primary-500: #7d52f4;
+  --color-purple-primary-600: #8c71f6;
+  --color-purple-primary-700: #a897ff;
+  --color-purple-primary-800: #cac0ff;
+  --color-purple-primary-900: #dcd5ff;
+  --color-purple-primary-950: #ffffff;
+
+  --color-red-50: #300802;
+  --color-red-100: #892314;
+  --color-red-200: #a62310;
+  --color-red-300: #c8260d;
+  --color-red-400: #e52c12;
+  --color-red-500: #fe4f33;
+  --color-red-600: #fd7a64;
+  --color-red-700: #ffab9e;
+  --color-red-800: #ffcdc5;
+  --color-red-900: #fde4dd;
+  --color-red-950: #fff3f1;
+
+  --color-low: #7e7b87;
+  --color-normal: #c6c2d1;
+  --color-high: #f3f2f7;
+  --color-disabled: #55535c;
+
+  --color-action-error: #ffab9e;
+  --color-action-primary: #cac0ff;
+  --color-action-info: #97baff;
+  --color-action-warning: #ffc197;
+  --color-action-success: #94ce94;
+
+  --color-bg_primary: #151417;
+  --color-bg_secondary: #1a191c;
+  --color-bg_tertiary: #232226;
+
+  --color-bd_neutral_primary: #2f2d33;
+  --color-bd_neutral_secondary: #232226;
+  --color-bd_neutral_tertiary: #1a191c;
+
+  --color-bd_error: #fd7a64;
+  --color-bd_primary: #8c71f6;
+  --color-bd_info: #6895ff;
+  --color-bd_warning: #ffa468;
+  --color-bd_success: #70b772;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/PretendardStd-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/PretendardStd-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/PretendardStd-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/PretendardStd-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../assets/fonts/PretendardStd-ExtraBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'InterDisplay';
+  font-style: normal;
+  font-weight: 400;
+  font-feature-settings:
+    'ss10' on,
+    'cv01' on,
+    'cv02' on,
+    'cv03' on,
+    'cv04' on,
+    'cv05' on,
+    'cv06' on,
+    'cv07' on,
+    'cv09' on,
+    'cv12' on,
+    'cv13' on;
+  src: url('../assets/fonts/InterDisplay-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'InterDisplay';
+  font-style: normal;
+  font-weight: 500;
+  font-feature-settings:
+    'ss10' on,
+    'cv01' on,
+    'cv02' on,
+    'cv03' on,
+    'cv04' on,
+    'cv05' on,
+    'cv06' on,
+    'cv07' on,
+    'cv09' on,
+    'cv12' on,
+    'cv13' on;
+  src: url('../assets/fonts/InterDisplay-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'InterDisplay';
+  font-style: normal;
+  font-weight: 600;
+  font-feature-settings:
+    'ss10' on,
+    'cv01' on,
+    'cv02' on,
+    'cv03' on,
+    'cv04' on,
+    'cv05' on,
+    'cv06' on,
+    'cv07' on,
+    'cv09' on,
+    'cv12' on,
+    'cv13' on;
+  src: url('../assets/fonts/InterDisplay-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'InterDisplay';
+  font-style: normal;
+  font-weight: 700;
+  font-feature-settings:
+    'ss10' on,
+    'cv01' on,
+    'cv02' on,
+    'cv03' on,
+    'cv04' on,
+    'cv05' on,
+    'cv06' on,
+    'cv07' on,
+    'cv09' on,
+    'cv12' on,
+    'cv13' on;
+  src: url('../assets/fonts/InterDisplay-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'InterDisplay';
+  font-style: normal;
+  font-weight: 800;
+  font-feature-settings:
+    'ss10' on,
+    'cv01' on,
+    'cv02' on,
+    'cv03' on,
+    'cv04' on,
+    'cv05' on,
+    'cv06' on,
+    'cv07' on,
+    'cv09' on,
+    'cv12' on,
+    'cv13' on;
+  src: url('../assets/fonts/InterDisplay-ExtraBold.woff2') format('woff2');
+}
+
+body {
+  -webkit-font-smoothing: 'antialiased';
+  background-color: var(--color-bg_secondary);
+  font-family: 'Pretendard';
+}
