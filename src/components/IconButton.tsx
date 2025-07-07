@@ -3,15 +3,15 @@ import { cva } from 'class-variance-authority';
 import type React from 'react';
 import { twMerge } from 'tailwind-merge';
 
-interface IconButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface IconButtonProps {
   size?: 'small' | 'default' | 'large';
   color?: 'primary' | 'neutral' | 'success' | 'error' | 'warning';
   variant?: 'filled' | 'light' | 'outline' | 'ghost';
   icon: TablerIcon;
-  class?: string;
+  classNames?: string;
 }
 
-export function IconButton(props: IconButtonProps) {
+export function IconButton(props: IconButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   const buttonCva = cva(
     'rounded-lg flex items-center justify-center w-fit shrink-0 gap-1.5 cursor-pointer',
     {
@@ -174,7 +174,7 @@ export function IconButton(props: IconButtonProps) {
           color: props.color,
           variant: props.variant,
         }),
-        props.class,
+        props.classNames,
       )}
       {...props}
     >

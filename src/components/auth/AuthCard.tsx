@@ -1,11 +1,11 @@
-import placeholderLogo from '@/assets/PlaceholderLogo.svg';
+import placeholderLogo from '@/assets/placeholder-logo.svg';
 import { Show } from '@/components/Show';
-import type { JSX } from 'react';
+import type { JSX, ReactNode } from 'react';
 
 interface AuthCardProps {
   title: string;
   helperText?: string;
-  children: JSX.Element;
+  children: ReactNode;
 }
 
 export function AuthCard(props: AuthCardProps) {

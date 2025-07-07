@@ -5,17 +5,17 @@ import type { ReactNode } from 'react';
 import type React from 'react';
 import { twMerge } from 'tailwind-merge';
 
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps {
   size?: 'small' | 'default' | 'large';
   color?: 'primary' | 'neutral' | 'success' | 'error' | 'warning';
   variant?: 'filled' | 'light' | 'outline' | 'ghost' | 'link';
   children: ReactNode;
   leftIcon?: TablerIcon;
   rightIcon?: TablerIcon;
-  class?: string;
+  classNames?: string;
 }
 
-export function Button(props: ButtonProps) {
+export function Button(props: ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   const buttonCva = cva(
     'rounded-lg flex items-center justify-center w-fit shrink-0 gap-1.5 cursor-pointer',
     {
@@ -209,7 +209,7 @@ export function Button(props: ButtonProps) {
           color: props.color,
           variant: props.variant,
         }),
-        props.class,
+        props.classNames,
       )}
       {...props}
     >
