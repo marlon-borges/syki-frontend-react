@@ -1,6 +1,6 @@
 import placeholderLogo from '@/assets/placeholder-logo.svg';
 import { Show } from '@/components/Show';
-import type { JSX, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface AuthCardProps {
   title: string;
@@ -18,7 +18,7 @@ export function AuthCard(props: AuthCardProps) {
             <p className="text-center font-display text-lg font-semibold text-normal">
               {props.title}
             </p>
-            <Show when={!props.helperText}>
+            <Show when={!!props.helperText}>
               <p className="text-center text-sm font-normal text-low">{props.helperText}</p>
             </Show>
           </div>
