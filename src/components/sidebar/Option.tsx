@@ -8,6 +8,7 @@ interface OptionProps extends React.ComponentProps<typeof NavLink> {
   icon: TablerIcon;
   label: string;
   hasArrow?: boolean;
+  opened?: boolean;
 }
 
 export const Option = (props: OptionProps) => {
@@ -16,10 +17,11 @@ export const Option = (props: OptionProps) => {
       <NavLink
         className={({ isActive }) =>
           twMerge(
-            'flex items-center gap-1.5 rounded-lg border px-2.5 py-2',
+            'flex items-center gap-1.5 rounded-lg border',
+            props.opened ? 'px-2.5 py-2' : 'justify-center px-2.5 py-[0.5625rem]',
             isActive
               ? 'border-s-muted bg-b-subtle *:text-t-default'
-              : 'border-transparent bg-b-default *:text-t-muted hover:bg-b-default',
+              : 'border-transparent bg-b-default *:text-t-muted hover:bg-b-subtle',
           )
         }
         {...props}
@@ -27,12 +29,14 @@ export const Option = (props: OptionProps) => {
         {({ isActive }) => (
           <>
             <props.icon stroke={2.25} size={18} className="shrink-0" />
-            <span className="w-full truncate px-0.5 text-sm font-medium">{props.label}</span>
-            <Show when={props.hasArrow}>
+            <Show when={props.opened}>
+              <span className="w-full truncate px-0.5 text-sm font-medium">{props.label}</span>
+            </Show>
+            <Show when={props.hasArrow && props.opened}>
               <IconChevronDown
                 stroke={2.25}
                 size={16}
-                className={twMerge('shrink-0 text-t-subtle!', isActive && 'rotate-180')} // ATUALIZAR OS ESTILOS PARA COMPORTAR TEXT-SUBTLE POR EXEMPLO
+                className={twMerge('shrink-0 text-t-subtle!', isActive && 'rotate-180')}
               />
             </Show>
           </>
