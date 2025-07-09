@@ -7,6 +7,7 @@ import CourseOfferingsPage from '@/pages/protected/Academic/CourseOfferings/Cour
 import CoursesPage from '@/pages/protected/Academic/Courses/CoursesPage';
 import DisciplinesPage from '@/pages/protected/Academic/Disciplines/DisciplinesPage';
 import EnrollmentPeriodsPage from '@/pages/protected/Academic/EnrollmentPeriods/EnrollmentPeriodsPage';
+import InsightsPage from '@/pages/protected/Academic/Insights/InsightsPage';
 import NotificationsPage from '@/pages/protected/Academic/Notifications/NotificationsPage';
 import StudentsPage from '@/pages/protected/Academic/Students/StudentsPage';
 import TeachersPage from '@/pages/protected/Academic/Teachers/TeachersPage';
@@ -15,6 +16,7 @@ import { Route } from 'react-router';
 export default function AcademicRoutes() {
   return (
     <>
+      <Route path="insights" element={<InsightsPage />} />
       <Route path="campi" element={<CampiPage />} />
       <Route path="courses" element={<CoursesPage />} />
       <Route path="disciplines" element={<DisciplinesPage />} />
