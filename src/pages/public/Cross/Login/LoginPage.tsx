@@ -4,12 +4,12 @@ import { Button } from '@/components/Button';
 import { IconButton } from '@/components/IconButton';
 import { MyField } from '@/components/MyField';
 import { Show } from '@/components/Show';
+import { useShowPassword } from '@/utils/useShowPassword';
 import { IconAlertTriangle, IconEye, IconEyeClosed } from '@tabler/icons-react';
-import { useState } from 'react';
 import { Link } from 'react-router';
 
 const LoginPage = () => {
-  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const { showPassword, togglePassword, inputRef } = useShowPassword();
 
   return (
     <AuthCard title="Entre na Syki">
@@ -40,6 +40,7 @@ const LoginPage = () => {
             type={showPassword ? 'text' : 'password'}
             className="pr-10"
             name="password"
+            ref={inputRef}
           />
           <IconButton
             icon={showPassword ? IconEyeClosed : IconEye}
@@ -47,7 +48,7 @@ const LoginPage = () => {
             color={showPassword ? 'primary' : 'neutral'}
             classNames="absolute top-[1.875rem] right-1"
             size="small"
-            onClick={() => setShowPassword(prev => !prev)}
+            onClick={() => togglePassword()}
             tabIndex={-1}
             type="button"
           />

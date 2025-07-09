@@ -3,6 +3,7 @@ import { CharacterVerification } from '@/components/auth/CharacterVerification';
 import { Button } from '@/components/Button';
 import { IconButton } from '@/components/IconButton';
 import { MyField } from '@/components/MyField';
+import { useShowPassword } from '@/utils/useShowPassword';
 import { IconEye, IconEyeClosed } from '@tabler/icons-react';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
@@ -17,7 +18,7 @@ type isValidPasswordProps = {
 };
 
 const RegisterSetupPage = () => {
-  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const { showPassword, togglePassword, inputRef } = useShowPassword();
   const [isValidPassword, setIsValidPassword] = useState<isValidPasswordProps>({
     numbers: false,
     lowercase: false,
@@ -36,6 +37,7 @@ const RegisterSetupPage = () => {
           placeholder="Digite sua senha"
           type={showPassword ? 'text' : 'password'}
           className="pr-10"
+          ref={inputRef}
         />
         <IconButton
           icon={showPassword ? IconEyeClosed : IconEye}
@@ -43,7 +45,7 @@ const RegisterSetupPage = () => {
           color={showPassword ? 'primary' : 'neutral'}
           classNames="absolute top-[1.875rem] right-1"
           size="small"
-          onClick={() => setShowPassword(prev => !prev)}
+          onClick={() => togglePassword()}
         />
         <MyField.ErrorText>ErrorText do input</MyField.ErrorText>
       </MyField.Root>
