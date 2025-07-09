@@ -17,10 +17,10 @@ export function MyPinInput(props: MyPinInputProps) {
       <PinInput.Root className={twMerge('flex w-full justify-center', props.pinRootClassName)}>
         <PinInput.Control
           className={twMerge(
-            'flex w-fit rounded-lg border border-bd_neutral_primary',
+            'flex w-fit rounded-lg border border-s-default',
             focus &&
-              'border-neutral-600 ring-2 ring-neutral-200 ring-offset-2 ring-offset-bg_primary',
-            props.invalid && 'border-bd_error bg-red-50 ring-red-200 *:text-action-error',
+              'border-neutral-600 ring-2 ring-neutral-200 ring-offset-2 ring-offset-b-default',
+            props.invalid && 'border-s-error bg-red-50 ring-red-200 *:text-t-error',
           )}
         >
           {Array.from({ length: 6 }).map((_, index) => {
@@ -28,7 +28,7 @@ export function MyPinInput(props: MyPinInputProps) {
               return (
                 <PinInput.Input
                   key={`my-pin-input-${index}`}
-                  className="h-10 w-8 pr-1 pl-3 text-center text-lg font-bold text-normal placeholder:text-low focus:outline-none"
+                  className="h-10 w-8 pr-1 pl-3 text-center text-lg font-bold text-t-muted placeholder:text-t-subtle focus:outline-none"
                   placeholder="•"
                   index={index}
                   onFocus={() => setFocus(true)}
@@ -39,7 +39,7 @@ export function MyPinInput(props: MyPinInputProps) {
               return (
                 <PinInput.Input
                   key={`my-pin-input-${index}`}
-                  className="h-10 w-8 pr-3 pl-1 text-center text-lg font-bold text-normal placeholder:text-low focus:outline-none"
+                  className="h-10 w-8 pr-3 pl-1 text-center text-lg font-bold text-t-muted placeholder:text-t-subtle focus:outline-none"
                   placeholder="•"
                   index={index}
                   onFocus={() => setFocus(true)}
@@ -50,7 +50,7 @@ export function MyPinInput(props: MyPinInputProps) {
             return (
               <PinInput.Input
                 key={`my-pin-input-${index}`}
-                className="h-10 w-6 text-center text-lg font-bold text-normal placeholder:text-low focus:outline-none"
+                className="h-10 w-6 text-center text-lg font-bold text-t-muted placeholder:text-t-subtle focus:outline-none"
                 placeholder="•"
                 index={index}
                 onFocus={() => setFocus(true)}
@@ -62,11 +62,11 @@ export function MyPinInput(props: MyPinInputProps) {
         <PinInput.HiddenInput />
       </PinInput.Root>
       <Show when={props.helperText}>
-        <Field.HelperText className="text-center text-xs text-low">
+        <Field.HelperText className="text-center text-xs text-t-subtle">
           {props.helperText}
         </Field.HelperText>
       </Show>
-      <Field.ErrorText className="text-center text-xs text-action-error">
+      <Field.ErrorText className="text-center text-xs text-t-error">
         {props.errorText}
       </Field.ErrorText>
     </Field.Root>

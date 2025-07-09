@@ -60,7 +60,7 @@ const ResetPasswordPage = () => {
       <div
         className={twMerge(
           'space-y-2 rounded-lg px-3 py-2.5',
-          isValidPassword.isAllValid ? 'bg-green-50' : 'bg-bg_secondary',
+          isValidPassword.isAllValid ? 'bg-green-50' : 'bg-b-subtle',
         )}
       >
         <CharacterVerification

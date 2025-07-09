@@ -12,13 +12,16 @@ type CharacterVerificationProps = {
 export function CharacterVerification(props: CharacterVerificationProps): JSX.Element {
   return (
     <div className="flex w-full items-center gap-2">
-      <Show when={props.isValid} fallback={<IconX size={18} stroke="2.25" className="text-low" />}>
-        <IconCheck stroke="2.25" className="text-action-success" size={18} />
+      <Show
+        when={props.isValid}
+        fallback={<IconX size={18} stroke="2.25" className="text-t-subtle" />}
+      >
+        <IconCheck stroke="2.25" className="text-t-success" size={18} />
       </Show>
       <span
         className={twMerge(
           'w-full text-sm font-normal',
-          props.isValid ? 'text-action-success' : 'text-normal',
+          props.isValid ? 'text-t-success' : 'text-t-muted',
         )}
       >
         {props.mainText}
@@ -26,7 +29,7 @@ export function CharacterVerification(props: CharacterVerificationProps): JSX.El
       <span
         className={twMerge(
           'text-sm font-normal whitespace-nowrap',
-          props.isValid ? 'text-action-success' : 'text-low',
+          props.isValid ? 'text-t-success' : 'text-t-subtle',
         )}
       >
         {props.leftText}

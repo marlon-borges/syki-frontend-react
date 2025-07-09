@@ -52,17 +52,17 @@ export const Alert = (props: AlertProps) => {
       {
         color: 'primary',
         variant: 'filled',
-        class: 'bg-purple-primary-500 text-white',
+        class: 'bg-purple-500 text-t-inverted',
       },
       {
         color: 'primary',
         variant: 'light',
-        class: 'bg-purple-primary-100 text-purple-primary-800',
+        class: 'bg-purple-100 text-purple-800',
       },
       {
         color: 'info',
         variant: 'filled',
-        class: 'bg-blue-500 text-white',
+        class: 'bg-blue-500 text-t-inverted',
       },
       {
         color: 'info',
@@ -72,7 +72,7 @@ export const Alert = (props: AlertProps) => {
       {
         color: 'error',
         variant: 'filled',
-        class: 'bg-red-500 text-white',
+        class: 'bg-red-500 text-t-inverted',
       },
       {
         color: 'error',
@@ -82,7 +82,7 @@ export const Alert = (props: AlertProps) => {
       {
         color: 'success',
         variant: 'filled',
-        class: 'bg-green-500 text-white',
+        class: 'bg-green-500 text-t-inverted',
       },
       {
         color: 'success',
@@ -92,7 +92,7 @@ export const Alert = (props: AlertProps) => {
       {
         color: 'warning',
         variant: 'filled',
-        class: 'bg-orange-500 text-white',
+        class: 'bg-orange-500 text-t-inverted',
       },
       {
         color: 'warning',
@@ -102,12 +102,12 @@ export const Alert = (props: AlertProps) => {
       {
         color: 'neutral',
         variant: 'filled',
-        class: 'bg-neutral-950 dark:bg-neutral-400 text-white',
+        class: 'bg-neutral-950 dark:bg-neutral-400 text-t-inverted',
       },
       {
         color: 'neutral',
         variant: 'light',
-        class: 'bg-neutral-200 text-high',
+        class: 'bg-neutral-200 text-t-default',
       },
     ],
     defaultVariants: {

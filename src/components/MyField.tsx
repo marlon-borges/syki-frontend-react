@@ -19,7 +19,7 @@ function Label(props: FieldLabelProps) {
   return (
     <Field.Label
       {...props}
-      className={twMerge('dark:text-normal-dark text-sm font-medium text-normal', props.className)}
+      className={twMerge('text-sm font-medium text-t-muted dark:text-t-muted', props.className)}
     >
       {props.children}
     </Field.Label>
@@ -34,15 +34,14 @@ interface InputProps extends FieldInputProps {
 function Input(props: InputProps) {
   const inputCva = cva(
     [
-      'placeholder:text-low border-bd_neutral_primary rounded-lg border text-sm focus:border-neutral-600 focus:ring-2 focus:ring-neutral-200 focus:ring-offset-2 focus:ring-offset-bg_primary focus:outline-none',
+      'placeholder:text-t-subtle border-s-default rounded-lg border text-sm focus:border-neutral-600 focus:ring-2 focus:ring-neutral-200 focus:ring-offset-2 focus:ring-offset-b-default focus:outline-none',
     ],
     {
       variants: {
         state: {
-          default: 'bg-bg_primary text-normal',
-          disabled: 'bg-bg_primary text-disabled cursor-default placeholder:text-disabled',
-          error:
-            'bg-red-50 border-bd_error text-action-error focus:border-bd_error focus:ring-red-200',
+          default: 'bg-b-default text-t-muted',
+          disabled: 'bg-b-default text-t-disabled cursor-default placeholder:text-t-disabled',
+          error: 'bg-red-50 border-s-error text-t-error focus:border-b-error focus:ring-red-200',
         },
         size: {
           small: 'h-8 px-2.5 py-1.5',
@@ -64,9 +63,9 @@ function Input(props: InputProps) {
   const iconCva = cva('pointer-events-none absolute top-1/2 left-3 -translate-y-1/2', {
     variants: {
       state: {
-        default: 'text-normal',
-        disabled: 'text-disabled',
-        error: 'text-action-error',
+        default: 'text-t-muted',
+        disabled: 'text-t-disabled',
+        error: 'text-t-error',
       },
     },
   });
@@ -115,7 +114,7 @@ function Input(props: InputProps) {
 
 function HelperText(props: FieldHelperTextProps) {
   return (
-    <Field.HelperText {...props} className={twMerge('text-xs text-low', props.className)}>
+    <Field.HelperText {...props} className={twMerge('text-xs text-t-subtle', props.className)}>
       {props.children}
     </Field.HelperText>
   );
@@ -123,7 +122,7 @@ function HelperText(props: FieldHelperTextProps) {
 
 function ErrorText(props: FieldErrorTextProps) {
   return (
-    <Field.ErrorText {...props} className={twMerge('text-xs text-action-error', props.className)}>
+    <Field.ErrorText {...props} className={twMerge('text-xs text-t-error', props.className)}>
       {props.children}
     </Field.ErrorText>
   );

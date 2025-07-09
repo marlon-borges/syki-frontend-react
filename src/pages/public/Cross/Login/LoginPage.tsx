@@ -29,7 +29,7 @@ const LoginPage = () => {
           <MyField.Label>Senha</MyField.Label>
           <Link
             to="/send-reset-password"
-            className="absolute top-1 right-0 cursor-pointer text-xs text-low hover:underline"
+            className="absolute top-1 right-0 cursor-pointer text-xs text-t-subtle hover:underline"
             tabIndex={-1}
           >
             Esqueci minha senha
@@ -66,11 +66,11 @@ const LoginPage = () => {
           Entrar
         </Button>
       </form>
-      <p className="text-center text-sm font-medium text-normal">
+      <p className="text-center text-sm font-medium text-t-muted">
         Não tem uma conta?{' '}
         <Link
           to="/register"
-          className="text-action-primary hover:underline focus-visible:underline focus-visible:outline-none"
+          className="text-t-accent hover:underline focus-visible:underline focus-visible:outline-none"
         >
           Comece por aqui
         </Link>

@@ -17,11 +17,11 @@ const SendResetPasswordPage = () => {
       <Button classNames="w-full" size="large">
         Enviar link de redefinição
       </Button>
-      <p className="text-center text-sm font-medium text-normal">
+      <p className="text-center text-sm font-medium text-t-muted">
         Lembrou da senha?{' '}
         <Link
           to="/login"
-          className="text-action-primary hover:underline focus-visible:underline focus-visible:outline-none"
+          className="text-t-accent hover:underline focus-visible:underline focus-visible:outline-none"
         >
           Faça login
         </Link>
