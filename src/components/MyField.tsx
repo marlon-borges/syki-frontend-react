@@ -29,6 +29,7 @@ function Label(props: FieldLabelProps) {
 interface InputProps extends FieldInputProps {
   icon?: TablerIcon;
   sizes?: 'small' | 'default' | 'large';
+  ref?: React.Ref<HTMLInputElement>;
 }
 
 function Input(props: InputProps) {
@@ -94,6 +95,7 @@ function Input(props: InputProps) {
               </Show>
               <Field.Input
                 {...props}
+                ref={props.ref}
                 className={twMerge(
                   'w-full',
                   inputCva({
