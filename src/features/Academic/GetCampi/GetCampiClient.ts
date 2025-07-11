@@ -1,6 +1,13 @@
 import { api } from "@/services/api";
 import { useQuery } from "@tanstack/react-query";
 
+export type CampusOut = {
+  id: string;
+  name: string;
+  state: string;
+  city: string;
+}
+
 async function GetCampiClient() {
    try {
       const response = await api.get("/academic/campi");
@@ -11,7 +18,7 @@ async function GetCampiClient() {
 }
 
 export function useGetCampi() {
-   return useQuery<void, Error, {}>({
+   return useQuery<CampusOut[], Error>({
       queryKey: ["get-campi"],
       queryFn: () => GetCampiClient(),
    });
