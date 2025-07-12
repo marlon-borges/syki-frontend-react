@@ -3,4 +3,8 @@ import { pluginReact } from '@rsbuild/plugin-react';
 
 export default defineConfig({
   plugins: [pluginReact()],
+  html: {
+    title: "Syki",
+    favicon: './src/assets/placeholder-logo.svg',
+  },
 });
