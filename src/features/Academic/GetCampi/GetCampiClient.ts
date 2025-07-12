@@ -1,5 +1,13 @@
 import { api } from "@/services/api";
 import { useQuery } from "@tanstack/react-query";
+import type { StatesType } from "@/types/StatesType";
+
+export type CampusOut = {
+  id: string;
+  name: string;
+  state: StatesType;
+  city: string;
+}
 
 async function GetCampiClient() {
    try {
@@ -11,7 +19,7 @@ async function GetCampiClient() {
 }
 
 export function useGetCampi() {
-   return useQuery<void, Error, {}>({
+   return useQuery<CampusOut[], Error>({
       queryKey: ["get-campi"],
       queryFn: () => GetCampiClient(),
    });

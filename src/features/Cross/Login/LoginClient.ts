@@ -1,6 +1,6 @@
 import { api } from '@/services/api';
-import type { MainBadRequestType } from '@/types/MainBadRequestType';
 import { useMutation } from '@tanstack/react-query';
+import type { MainBadRequestType } from '@/types/MainBadRequestType';
 
 export interface LoginProps {
   email: string;
