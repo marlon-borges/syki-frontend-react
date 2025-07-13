@@ -6,6 +6,19 @@
   --font-body: 'Pretendard', 'sans-serif';
   --font-display: 'InterDisplay', 'sans-serif';
 
+  --index-base: 1000;
+  --index-main: 1010;
+  --index-table-body: 1020;
+  --index-table-head: 1030;
+  --index-switcher-indicator: 1030;
+  --index-switcher-label: 1040;
+  --index-table-filters: 1040;
+  --index-main-corner: 7000;
+  --index-screen-header: 8050;
+  --index-backdrop-modal: 9000;
+  --index-content-modal: 9010;
+  --index-menu: 9998;
+
   /* Base */
   --color-base-black: #000000;
   --color-base-white: #ffffff;
@@ -230,6 +243,21 @@
       transform: translate3d(-4px, 0, 0);
     }
   }
+
+  --shadow-bottom-100: 0px 1px 2px 0px rgba(58, 69, 92, 0.12);
+  --shadow-bottom-200:
+    0px 2px 2px -1px rgba(58, 69, 92, 0.04), 0px 2px 8px -1px rgba(58, 69, 92, 0.08);
+  --shadow-bottom-300:
+    0px 2px 2px -1px rgba(58, 69, 92, 0.04), 0px 8px 16px -2px rgba(58, 69, 92, 0.12);
+  --shadow-bottom-400:
+    0px 2px 2px -1px rgba(58, 69, 92, 0.04), 0px 16px 24px -6px rgba(58, 69, 92, 0.16);
+  --shadow-top-100: 0px -1px 2px 0px rgba(58, 69, 92, 0.12);
+  --shadow-top-200:
+    0px 2px 2px -1px rgba(58, 69, 92, 0.04), 0px -2px 8px -1px rgba(58, 69, 92, 0.08);
+  --shadow-top-300:
+    0px -2px 2px -1px rgba(58, 69, 92, 0.04), 0px -8px 16px -2px rgba(58, 69, 92, 0.12);
+  --shadow-top-400:
+    0px -2px 2px -1px rgba(58, 69, 92, 0.04), 0px -16px 24px -6px rgba(58, 69, 92, 0.16);
 }
 
 .dark {
