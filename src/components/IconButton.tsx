@@ -11,7 +11,14 @@ interface IconButtonProps {
   classNames?: string;
 }
 
-export function IconButton(props: IconButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+export function IconButton({
+  icon: Icon,
+  size,
+  color,
+  variant,
+  classNames,
+  ...buttonProps
+}: IconButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   const buttonCva = cva(
     'rounded-lg flex items-center justify-center w-fit shrink-0 gap-1.5 cursor-pointer',
     {
@@ -170,15 +177,15 @@ export function IconButton(props: IconButtonProps & React.ButtonHTMLAttributes<H
       className={twMerge(
         '',
         buttonCva({
-          size: props.size,
-          color: props.color,
-          variant: props.variant,
+          size: size,
+          color: color,
+          variant: variant,
         }),
-        props.classNames,
+        classNames,
       )}
-      {...props}
+      {...buttonProps}
     >
-      <props.icon stroke="2.25" size={18} className="shrink-0" />
+      <Icon stroke="2.25" size={18} className="shrink-0" />
     </button>
   );
 }

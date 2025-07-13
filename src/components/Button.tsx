@@ -15,7 +15,16 @@ interface ButtonProps {
   classNames?: string;
 }
 
-export function Button(props: ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+export function Button({
+  size,
+  color,
+  variant,
+  children,
+  leftIcon: LeftIcon,
+  rightIcon: RightIcon,
+  classNames,
+  ...buttonProps
+}: ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   const buttonCva = cva(
     'rounded-lg flex items-center justify-center w-fit shrink-0 gap-1.5 cursor-pointer',
     {
@@ -205,20 +214,20 @@ export function Button(props: ButtonProps & React.ButtonHTMLAttributes<HTMLButto
       className={twMerge(
         '',
         buttonCva({
-          size: props.size,
-          color: props.color,
-          variant: props.variant,
+          size: size,
+          color: color,
+          variant: variant,
         }),
-        props.classNames,
+        classNames,
       )}
-      {...props}
+      {...buttonProps}
     >
-      <Show when={props.leftIcon}>
-        {props.leftIcon && <props.leftIcon stroke="2.25" size={18} className="shrink-0" />}
+      <Show when={!!LeftIcon}>
+        {LeftIcon && <LeftIcon stroke="2.25" size={18} className="shrink-0" />}
       </Show>
-      <span className="px-0.5 text-sm font-medium">{props.children}</span>
-      <Show when={props.rightIcon}>
-        {props.rightIcon && <props.rightIcon stroke="2.25" size={18} className="shrink-0" />}
+      <span className="px-0.5 text-sm font-medium">{children}</span>
+      <Show when={!!RightIcon}>
+        {RightIcon && <RightIcon stroke="2.25" size={18} className="shrink-0" />}
       </Show>
     </button>
   );

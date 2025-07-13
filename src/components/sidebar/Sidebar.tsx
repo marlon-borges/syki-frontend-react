@@ -169,14 +169,26 @@ export const Sidebar = ({ open, setOpen }: SidebarProps) => {
               placement="right"
               openDelay={50}
             >
-              <Option icon={option.icon} label={option.label} to={option.to} opened={open} />
+              <Option
+                icon={option.icon}
+                label={option.label}
+                to={option.to}
+                isActive={open}
+                opened={open}
+              />
             </Tooltip>
           );
         })}
         <div className="sticky bottom-0 h-4 w-full bg-gradient-to-t from-white via-white/50 to-white/0"></div>
       </nav>
       <nav className="pb-4">
-        <Option icon={IconSettings} label="Configurações" to={'/academic/settings'} opened={open} />
+        <Option
+          icon={IconSettings}
+          label="Configurações"
+          to={'/academic/settings'}
+          isActive={open}
+          opened={open}
+        />
         <Divider />
         <Tooltip label="Instituição" placement="right" openDelay={50} disabled={open}>
           <InstitutionOption label="Universidade Vale Azul" opened={open} />
