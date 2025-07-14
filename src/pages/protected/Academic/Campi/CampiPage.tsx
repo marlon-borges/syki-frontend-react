@@ -16,7 +16,7 @@ const CampiPage = () => {
       {data && data.length > 0 ? (
         <ul>
           {data.map((campus: CampusOut) => (
-            <li key={campus.id}>{campus.name} ({campus.city} - {campus.state})</li>
+            <li key={campus.id}>{campus.name} ({campus.city} - {campus.state}) [FillRate = {campus.students} / {campus.capacity} = {campus.fillRate}%]</li>
           ))}
         </ul>
       ) : (
