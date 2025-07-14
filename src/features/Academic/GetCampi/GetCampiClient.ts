@@ -7,6 +7,9 @@ export type CampusOut = {
   name: string;
   state: StatesType;
   city: string;
+  capacity: number;
+  students: number;
+  fillRate: number;
 }
 
 async function GetCampiClient() {
