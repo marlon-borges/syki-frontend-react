@@ -24,7 +24,7 @@ const IndexRoutes = () => {
       <Route element={<AuthLayout />}>
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
-        <Route path="register-password" element={<RegisterSetupPage />} />
+        <Route path="register-setup" element={<RegisterSetupPage />} />
         <Route path="send-reset-password" element={<SendResetPasswordPage />} />
         <Route path="reset-password" element={<ResetPasswordPage />} />
         <Route path="login-mfa" element={<LoginMfaPage />} />
