@@ -1,4 +1,8 @@
-import { useGetCampi, type CampusOut } from "@/features/Academic/GetCampi/GetCampiClient";
+import { Button } from '@/components/Button';
+import { MyField } from '@/components/MyField';
+import { useGetCampi, type CampusOut } from '@/features/Academic/GetCampi/GetCampiClient';
+import { CampusCard } from '@/pages/protected/Academic/Campi/components/CampusCard';
+import { IconChevronDown, IconFilter2, IconPlus, IconSearch } from '@tabler/icons-react';
 
 const CampiPage = () => {
   const { data, isLoading, isError, error } = useGetCampi();
@@ -12,17 +16,32 @@ const CampiPage = () => {
   }
 
   return (
-    <div className="ml-6 mt-6 gap-16">
-      {data && data.length > 0 ? (
-        <ul>
-          {data.map((campus: CampusOut) => (
-            <li key={campus.id}>{campus.name} ({campus.city} - {campus.state}) [FillRate = {campus.students} / {campus.capacity} = {campus.fillRate}%]</li>
-          ))}
-        </ul>
-      ) : (
-        <p>Nenhum campus encontrado.</p>
-      )}
-    </div>
+    <section className="p-6">
+      <nav className="mb-4 flex items-center gap-4">
+        <MyField.Root className="max-w-3xs">
+          <MyField.Input icon={IconSearch} placeholder="Pesquisar..." />
+        </MyField.Root>
+        <Button variant="outline" color="neutral" rightIcon={IconChevronDown}>
+          Ordenar por
+        </Button>
+        <Button variant="outline" color="neutral" leftIcon={IconFilter2}>
+          Filtros
+        </Button>
+        <div className="flex w-full flex-1 justify-end">
+          <Button leftIcon={IconPlus}>Novo campus</Button>
+        </div>
+      </nav>
+      <div className="flex w-full flex-wrap gap-4">
+        {data?.map((campus: CampusOut) => (
+          <CampusCard
+            name={campus.name}
+            state={[campus.city, campus.state]}
+            fillRate={campus.fillRate}
+            chartData={[campus.students, campus.capacity]}
+          />
+        ))}
+      </div>
+    </section>
   );
 };
 

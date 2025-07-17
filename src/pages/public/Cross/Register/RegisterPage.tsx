@@ -1,7 +1,5 @@
 import { z } from 'zod';
 import { Link } from 'react-router';
-import { Show } from '@/components/Show';
-import { Alert } from '@/components/Alert';
 import { Button } from '@/components/Button';
 import { MyField } from '@/components/MyField';
 import { AuthCard } from '@/components/auth/AuthCard';
@@ -9,6 +7,8 @@ import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { IconAlertTriangle, IconProgressCheck } from '@tabler/icons-react';
 import { usePendingRegisterMutation } from '@/features/Cross/PendingRegister/PendingRegisterClient';
+import { Show } from '@/components/Show';
+import { Alert } from '@/components/Alert';
 
 const registerSetupSchema = z.object({
   email: z.email({ error: 'E-mail inválido' }),
@@ -84,7 +84,10 @@ const RegisterPage = () => {
       </Show>
 
       <Show when={isSuccess}>
-        <AuthCard title="Cadastro concluído!" helperText="Verifique seu email e utilize o link que enviamos para definir sua senha de acesso.">
+        <AuthCard
+          title="Cadastro concluído!"
+          helperText="Verifique seu email e utilize o link que enviamos para definir sua senha de acesso."
+        >
           <div className="flex w-full flex-col items-center gap-2">
             <IconProgressCheck stroke="2.25" size={68} className="shrink-0" />
           </div>

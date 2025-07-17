@@ -77,7 +77,7 @@ export function IconButton({
           color: 'neutral',
           variant: 'light',
           class:
-            'bg-neutral-50 dark:bg-neutral-200 hover:dark:bg-neutral-300 text-t-muted hover:bg-neutral-100 dark:disabled:bg-neutral-200 disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
+            'bg-b-muted dark:bg-neutral-200 hover:dark:bg-neutral-300 text-t-muted hover:bg-b-emphasized dark:disabled:bg-neutral-200 disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
         },
         {
           color: 'neutral',
