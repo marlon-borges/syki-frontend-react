@@ -3,8 +3,9 @@ import { Title } from '@/components/header/Title';
 import { IconButton } from '@/components/IconButton';
 import { Show } from '@/components/Show';
 import { useLayoutContext } from '@/context/layout/useLayoutContext';
-import { IconBell, IconLayoutSidebar } from '@tabler/icons-react';
+import { IconBell, IconDoorExit, IconLayoutSidebar } from '@tabler/icons-react';
 import institutionPlaceholder from '@/assets/institution-placeholder.jpg';
+import { api } from '@/services/api';
 
 const Divider = () => (
   <div className="absolute bottom-0 flex w-[calc(100%-48px)] items-center justify-center">
@@ -38,6 +39,13 @@ export const Header = () => {
         </div>
         <div className="flex items-center gap-2">
           <IconButton icon={IconBell} variant="ghost" color="neutral" size="small" />
+          <IconButton
+            icon={IconDoorExit}
+            variant="outline"
+            color="error"
+            size="small"
+            onClick={() => api.post('/logout')}
+          />
           <Profile src={institutionPlaceholder} alt="profile" />
         </div>
       </div>

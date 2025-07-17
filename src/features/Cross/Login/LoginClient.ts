@@ -9,6 +9,10 @@ export interface LoginProps {
 
 export interface LoginResponse {
   accessToken: string;
+  id: string;
+  name: string;
+  email: string;
+  role: string;
 }
 
 async function LoginClient({ email, password }: LoginProps) {

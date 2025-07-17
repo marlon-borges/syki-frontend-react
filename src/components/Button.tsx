@@ -24,7 +24,7 @@ export function Button({
   rightIcon: RightIcon,
   classNames,
   ...buttonProps
-}: ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+}: ButtonProps & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'className'>) {
   const buttonCva = cva(
     'rounded-lg flex items-center justify-center w-fit shrink-0 gap-1.5 cursor-pointer',
     {
@@ -90,7 +90,7 @@ export function Button({
           color: 'neutral',
           variant: 'light',
           class:
-            'bg-neutral-50 dark:bg-neutral-200 hover:dark:bg-neutral-300 text-t-muted hover:bg-neutral-100 dark:disabled:bg-neutral-200 disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
+            'bg-b-muted dark:bg-neutral-200 hover:dark:bg-neutral-300 text-t-muted hover:bg-b-emphasized dark:disabled:bg-neutral-200 disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
         },
         {
           color: 'neutral',
@@ -225,7 +225,7 @@ export function Button({
       <Show when={!!LeftIcon}>
         {LeftIcon && <LeftIcon stroke="2.25" size={18} className="shrink-0" />}
       </Show>
-      <span className="px-0.5 text-sm font-medium">{children}</span>
+      <span className="px-0.5 text-sm font-medium whitespace-nowrap">{children}</span>
       <Show when={!!RightIcon}>
         {RightIcon && <RightIcon stroke="2.25" size={18} className="shrink-0" />}
       </Show>
