@@ -32,8 +32,9 @@ const CampiPage = () => {
         </div>
       </nav>
       <div className="flex w-full flex-wrap gap-4">
-        {data?.map((campus: CampusOut) => (
+        {data?.map((campus: CampusOut, i) => (
           <CampusCard
+            key={`campus-card-${i}`}
             name={campus.name}
             state={[campus.city, campus.state]}
             fillRate={campus.fillRate}

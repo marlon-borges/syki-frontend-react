@@ -1,11 +1,12 @@
 import { Button } from '@/components/Button';
 import { IconButton } from '@/components/IconButton';
 import { ChartStudentsCapacity } from '@/pages/protected/Academic/Campi/components/ChartStudentsCapacity';
-import { IconDotsVertical, IconMapPin } from '@tabler/icons-react';
+import { IconDotsVertical, IconMapPin, IconPencil, IconTrash } from '@tabler/icons-react';
 import type React from 'react';
 import { useState } from 'react';
 import placeholderCampusLogo from '@/assets/placeholder-campus-logo.svg';
 import { twMerge } from 'tailwind-merge';
+import { Dropdown } from '@/components/Dropdown';
 
 export interface CampusCardProps extends React.ComponentProps<'div'> {
   photoSrc?: string;
@@ -37,14 +38,14 @@ export const CampusCard = ({
           <img
             src={placeholderCampusLogo}
             alt="institution-backdrop-logo"
-            className="z-0 opacity-15"
+            className="z-0 w-full opacity-15"
           />
         )}
         <img
           src={photoSrc}
           onLoad={() => setImgBackdropLoading(true)}
           alt="institution-backdrop-logo"
-          className="z-0 opacity-15"
+          className="z-0 w-full opacity-15"
         />
       </figure>
       {!imgLoading && (
@@ -67,7 +68,8 @@ export const CampusCard = ({
       <div className="space-y-1.5 px-4 pt-2">
         <p className="line-clamp-2 font-display text-lg font-semibold text-t-default">{name}</p>
         <span className="flex items-center gap-1.5 text-sm font-normal text-t-muted">
-          <IconMapPin stroke={2.25} size={18} /> {`${state[0]}, ${state[1]}`}
+          <IconMapPin stroke={2.25} size={18} className="text-t-subtle!" />{' '}
+          {`${state[0]}, ${state[1]}`}
         </span>
       </div>
       <ChartStudentsCapacity fillRate={fillRate} chartData={chartData} />
@@ -75,7 +77,19 @@ export const CampusCard = ({
         <Button variant="light" color="neutral" size="small" classNames="flex-1">
           Editar
         </Button>
-        <IconButton icon={IconDotsVertical} variant="light" color="neutral" size="small" />
+        <Dropdown.Root>
+          <Dropdown.Trigger>
+            <IconButton icon={IconDotsVertical} variant="light" color="neutral" size="small" />
+          </Dropdown.Trigger>
+          <Dropdown.Content>
+            <Dropdown.Item value="edit-campus" icon={IconPencil}>
+              Editar
+            </Dropdown.Item>
+            <Dropdown.Item value="delete-campus" icon={IconTrash} variant="error">
+              Excluir
+            </Dropdown.Item>
+          </Dropdown.Content>
+        </Dropdown.Root>
       </div>
     </div>
   );
