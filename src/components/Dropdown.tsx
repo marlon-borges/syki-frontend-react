@@ -7,6 +7,7 @@ import {
   type MenuSeparatorProps,
   type MenuTriggerProps,
 } from '@ark-ui/react';
+import type { TablerIcon } from '@tabler/icons-react';
 import { cva } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
@@ -45,17 +46,18 @@ const MenuSeparator = (separatorProps: MenuSeparatorProps) => (
 interface ItemProps extends MenuItemProps {
   variant?: 'default' | 'error' | 'disabled' | 'active';
   size?: 'small' | 'default' | 'large';
+  icon?: TablerIcon;
 }
 
-const MenuItem = ({ children, variant, size, ...itemProps }: ItemProps) => {
+const MenuItem = ({ children, variant, size, icon: Icon, ...itemProps }: ItemProps) => {
   const itemCva = cva('rounded-sm flex cursor-pointer items-center gap-1.5 text-sm font-medium', {
     variants: {
       variant: {
-        default: 'text-t-muted bg-b-default hover:bg-b-subtle data-[highlighted=true]:bg-b-subtle',
-        error: 'text-t-error bg-b-default hover:bg-b-error data-[highlighted=true]:bg-b-error',
+        default: 'text-t-muted bg-b-default hover:bg-b-subtle data-[highlighted]:bg-b-subtle',
+        error: 'text-t-error bg-b-default hover:bg-b-error data-[highlighted]:bg-b-error',
         disabled:
-          'text-t-disabled cursor-default hover:bg-transparent data-[highlighted=true]:bg-transparent',
-        active: 'text-t-default bg-b-muted hover:bg-b-muted data-[highlighted=true]:bg-b-muted',
+          'text-t-disabled cursor-default hover:bg-transparent data-[highlighted]:bg-transparent',
+        active: 'text-t-default bg-b-muted hover:bg-b-muted data-[highlighted]:bg-b-muted',
       },
       size: {
         small: 'px-1.5 h-8 min-h-8 max-h-8',
@@ -75,6 +77,11 @@ const MenuItem = ({ children, variant, size, ...itemProps }: ItemProps) => {
       className={twMerge(itemCva({ variant: itemProps.disabled ? 'disabled' : variant, size }))}
       {...itemProps}
     >
+      {Icon && (
+        <div className="pl-0.5">
+          <Icon stroke={2.25} size={18} className="min-h-4.5 min-w-4.5 shrink-0" />
+        </div>
+      )}
       <span className="px-0.5">{children}</span>
     </Menu.Item>
   );
