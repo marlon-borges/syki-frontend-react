@@ -11,11 +11,11 @@ import type { TablerIcon } from '@tabler/icons-react';
 import { cva } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
-function Root(props: FieldRootProps) {
+const Root = (props: FieldRootProps) => {
   return <Field.Root {...props} className={twMerge('flex flex-col gap-1.5', props.className)} />;
-}
+};
 
-function Label(props: FieldLabelProps) {
+const Label = (props: FieldLabelProps) => {
   return (
     <Field.Label
       {...props}
@@ -24,7 +24,7 @@ function Label(props: FieldLabelProps) {
       {props.children}
     </Field.Label>
   );
-}
+};
 
 interface InputProps extends FieldInputProps {
   icon?: TablerIcon;
@@ -32,7 +32,7 @@ interface InputProps extends FieldInputProps {
   ref?: React.Ref<HTMLInputElement>;
 }
 
-function Input(props: InputProps) {
+const Input = (props: InputProps) => {
   const inputCva = cva(
     [
       'placeholder:text-t-subtle border-s-default rounded-lg border text-sm focus:border-neutral-600 focus:ring-2 focus:ring-neutral-200 focus:ring-offset-2 focus:ring-offset-b-default focus:outline-none',
@@ -112,23 +112,23 @@ function Input(props: InputProps) {
       </Field.Context>
     </div>
   );
-}
+};
 
-function HelperText(props: FieldHelperTextProps) {
+const HelperText = (props: FieldHelperTextProps) => {
   return (
     <Field.HelperText {...props} className={twMerge('text-xs text-t-subtle', props.className)}>
       {props.children}
     </Field.HelperText>
   );
-}
+};
 
-function ErrorText(props: FieldErrorTextProps) {
+const ErrorText = (props: FieldErrorTextProps) => {
   return (
     <Field.ErrorText {...props} className={twMerge('text-xs text-t-error', props.className)}>
       {props.children}
     </Field.ErrorText>
   );
-}
+};
 
 export const MyField = {
   /** Container principal */
