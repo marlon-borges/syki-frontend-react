@@ -61,6 +61,11 @@ export const Title = () => {
       path: 'teachers',
     },
     {
+      label: 'Salas',
+      description: 'Salas de aula',
+      path: 'classrooms',
+    },
+    {
       label: 'Turmas',
       description: 'turmas',
       path: 'classes',
