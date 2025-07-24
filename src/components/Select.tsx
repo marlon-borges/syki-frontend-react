@@ -2,6 +2,7 @@ import {
   Field,
   Portal,
   Select,
+  type SelectHiddenSelectProps,
   type SelectItemGroupProps,
   type SelectItemProps,
   type SelectLabelProps,
@@ -94,6 +95,7 @@ const Root = <T,>({
     <Select.Root
       collection={collection}
       className={twMerge('flex flex-col gap-1.5', className)}
+      positioning={{ gutter: 4, ...rootProps['positioning'] }}
       {...rootProps}
     >
       {children}
@@ -177,9 +179,13 @@ const Trigger = ({ icon: Icon, className, size, ...valueProps }: SelectTriggerPr
   );
 };
 
-const Content = ({ children, ...itemGroupProps }: SelectItemGroupProps) => {
+interface ContentProps extends SelectItemGroupProps {
+  hasPortal?: boolean;
+}
+
+const Content = ({ children, hasPortal = true, ...itemGroupProps }: ContentProps) => {
   return (
-    <Portal>
+    <Portal disabled={!hasPortal}>
       <Select.Positioner className="w-(--reference-width)">
         <Select.Content className="z-(--index-menu) max-h-60 w-full animate-tb-in overflow-auto rounded-lg border border-s-default bg-b-default p-1 shadow-bottom-300 focus-within:outline-none focus:outline-none focus-visible:outline-none data-[state=closed]:animate-tb-out">
           <Select.ItemGroup {...itemGroupProps}>{children}</Select.ItemGroup>
@@ -232,10 +238,15 @@ const Item = ({ children, icon: Icon, size, helperText, ...itemProps }: MySelect
   );
 };
 
+const HiddenSelect = ({ ...hiddenSelectProps }: SelectHiddenSelectProps) => {
+  return <Select.HiddenSelect {...hiddenSelectProps} />;
+};
+
 export const MySelect = {
   MainRoot: FieldRoot,
   Root,
   Label,
+  HookFormRegister: HiddenSelect,
   Trigger,
   Content,
   Item,
