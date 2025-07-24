@@ -5,7 +5,7 @@ import { Show } from '@/components/Show';
 import { useLayoutContext } from '@/context/layout/useLayoutContext';
 import { IconBell, IconDoorExit, IconLayoutSidebar } from '@tabler/icons-react';
 import institutionPlaceholder from '@/assets/institution-placeholder.jpg';
-import { api } from '@/services/api';
+import { useAuthContext } from '@/context/auth/useAuthContext';
 
 const Divider = () => (
   <div className="absolute bottom-0 flex w-[calc(100%-48px)] items-center justify-center">
@@ -21,6 +21,8 @@ const Divider = () => (
 
 export const Header = () => {
   const { sidebarOpen, toggleOpen } = useLayoutContext();
+
+  const { logout } = useAuthContext();
 
   return (
     <nav className="relative h-[4.25rem] px-6">
@@ -44,7 +46,7 @@ export const Header = () => {
             variant="outline"
             color="error"
             size="small"
-            onClick={() => api.post('/logout')}
+            onClick={logout}
           />
           <Profile src={institutionPlaceholder} alt="profile" />
         </div>
