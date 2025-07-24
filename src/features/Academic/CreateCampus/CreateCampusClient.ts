@@ -6,6 +6,7 @@ export interface CreateCampusProps {
   name: string | null;
   state: StatesType;
   city: string | null;
+  capacity: number | null;
 }
 
 async function CreateCampusClient({ ...body }: CreateCampusProps) {

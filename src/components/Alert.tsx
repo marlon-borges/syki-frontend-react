@@ -57,7 +57,7 @@ export const Alert = (props: AlertProps) => {
       {
         color: 'primary',
         variant: 'light',
-        class: 'bg-purple-100 text-purple-800',
+        class: 'bg-b-accent-muted text-purple-800',
       },
       {
         color: 'info',
@@ -67,7 +67,7 @@ export const Alert = (props: AlertProps) => {
       {
         color: 'info',
         variant: 'light',
-        class: 'bg-blue-100 text-blue-800',
+        class: 'bg-b-info-muted text-blue-800',
       },
       {
         color: 'error',
@@ -77,7 +77,7 @@ export const Alert = (props: AlertProps) => {
       {
         color: 'error',
         variant: 'light',
-        class: 'bg-red-100 text-red-800',
+        class: 'bg-b-error-muted text-red-800',
       },
       {
         color: 'success',
@@ -87,7 +87,7 @@ export const Alert = (props: AlertProps) => {
       {
         color: 'success',
         variant: 'light',
-        class: 'bg-green-100 text-green-800',
+        class: 'bg-b-success-muted text-green-800',
       },
       {
         color: 'warning',
@@ -97,7 +97,7 @@ export const Alert = (props: AlertProps) => {
       {
         color: 'warning',
         variant: 'light',
-        class: 'bg-orange-100 text-orange-900',
+        class: 'bg-b-warning-muted text-orange-900',
       },
       {
         color: 'neutral',
@@ -107,7 +107,7 @@ export const Alert = (props: AlertProps) => {
       {
         color: 'neutral',
         variant: 'light',
-        class: 'bg-neutral-200 text-t-default',
+        class: 'bg-b-muted text-t-default',
       },
     ],
     defaultVariants: {

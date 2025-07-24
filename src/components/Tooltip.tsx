@@ -22,7 +22,7 @@ interface TooltipProps extends Omit<ArkTooltip.RootProps, 'positioning'> {
 }
 
 export const Tooltip = ({ label, description, placement, ...props }: TooltipProps) => {
-  const tooltipContentClass = cva('z-[9999] rounded-lg bg-neutral-950 px-3 py-2', {
+  const tooltipContentClass = cva('z-[9999] rounded-lg bg-b-inverted px-3 py-2', {
     variants: {
       placement: {
         top: '',
