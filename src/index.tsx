@@ -4,6 +4,7 @@ import './styles/global.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter } from 'react-router';
 import IndexRoutes from '@/routes/IndexRoutes';
+import { AuthProvider } from '@/context/auth/useAuthContext';
 
 const queryClient = new QueryClient();
 
@@ -14,7 +15,9 @@ if (rootEl) {
     <React.StrictMode>
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
+          <AuthProvider>
             <IndexRoutes />
+          </AuthProvider>
         </QueryClientProvider>
       </BrowserRouter>
     </React.StrictMode>,
