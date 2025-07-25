@@ -77,7 +77,7 @@ const Content = ({ children, className, size, ...contentProps }: ContentProps) =
 
   return (
     <Portal>
-      <Dialog.Backdrop className="fixed inset-0 z-(--index-backdrop-modal) animate-backdrop-in bg-neutral-950/70 data-[state=closed]:animate-backdrop-out" />
+      <Dialog.Backdrop className="fixed inset-0 z-(--index-backdrop-modal) animate-backdrop-in bg-gray-950/70 backdrop-blur-xs data-[state=closed]:animate-backdrop-out dark:bg-gray-900/70" />
       <Dialog.Positioner className="fixed top-0 left-0 z-(--index-content-modal) grid h-full w-full place-items-center">
         <Dialog.Content className={twMerge(contentCva({ size }), className)} {...contentProps}>
           {children}

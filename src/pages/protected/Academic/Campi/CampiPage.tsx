@@ -2,6 +2,7 @@ import { Button } from '@/components/Button';
 import { MyField } from '@/components/MyField';
 import { useGetCampi, type CampusOut } from '@/features/Academic/GetCampi/GetCampiClient';
 import { CampusCard } from '@/pages/protected/Academic/Campi/components/CampusCard';
+import { CreateCampusDialog } from '@/pages/protected/Academic/Campi/components/CreateCampusDialog';
 import { IconChevronDown, IconFilter2, IconPlus, IconSearch } from '@tabler/icons-react';
 
 const CampiPage = () => {
@@ -28,7 +29,9 @@ const CampiPage = () => {
           Filtros
         </Button>
         <div className="flex w-full flex-1 justify-end">
-          <Button leftIcon={IconPlus}>Novo campus</Button>
+          <CreateCampusDialog>
+            <Button leftIcon={IconPlus}>Novo campus</Button>
+          </CreateCampusDialog>
         </div>
       </nav>
       <div className="flex w-full flex-wrap gap-4">

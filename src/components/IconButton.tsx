@@ -53,19 +53,19 @@ export function IconButton({
           color: 'primary',
           variant: 'light',
           class:
-            'bg-purple-50 text-t-accent hover:bg-purple-100 disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
+            'bg-b-accent text-t-accent hover:bg-b-accent-muted disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
         },
         {
           color: 'primary',
           variant: 'outline',
           class:
-            'bg-transparent text-t-accent border border-purple-200 hover:bg-purple-50 disabled:border-neutral-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
+            'bg-transparent text-t-accent border border-purple-200 hover:bg-b-accent disabled:border-neutral-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
         },
         {
           color: 'primary',
           variant: 'ghost',
           class:
-            'bg-transparent text-t-accent hover:bg-purple-50 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
+            'bg-transparent text-t-accent hover:bg-b-accent disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
         },
         {
           color: 'neutral',
@@ -101,19 +101,19 @@ export function IconButton({
           color: 'success',
           variant: 'light',
           class:
-            'bg-green-50 text-t-success hover:bg-green-100 disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
+            'bg-b-success text-t-success hover:bg-b-success-muted disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
         },
         {
           color: 'success',
           variant: 'outline',
           class:
-            'bg-transparent text-t-success border border-green-200 hover:bg-green-100 dark:hover:bg-green-50 disabled:border-neutral-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
+            'bg-transparent text-t-success border border-green-200 hover:bg-b-success-muted dark:hover:bg-green-50 disabled:border-neutral-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
         },
         {
           color: 'success',
           variant: 'ghost',
           class:
-            'bg-transparent text-t-success hover:bg-green-100 hover:dark:bg-green-50 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
+            'bg-transparent text-t-success hover:bg-b-success-muted hover:dark:bg-b-success disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
         },
         {
           color: 'error',
@@ -125,19 +125,19 @@ export function IconButton({
           color: 'error',
           variant: 'light',
           class:
-            'bg-red-50 text-t-error hover:bg-red-100 disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
+            'bg-b-error text-t-error hover:bg-b-error-muted disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
         },
         {
           color: 'error',
           variant: 'outline',
           class:
-            'bg-transparent text-t-error border border-red-200 hover:bg-red-100 hover:dark:bg-red-50 disabled:border-neutral-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
+            'bg-transparent text-t-error border border-red-200 hover:bg-b-error-muted hover:dark:bg-red-50 disabled:border-neutral-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
         },
         {
           color: 'error',
           variant: 'ghost',
           class:
-            'bg-transparent text-t-error hover:bg-red-100 hover:dark:bg-red-50 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
+            'bg-transparent text-t-error hover:bg-b-error-muted hover:dark:bg-b-error disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
         },
         {
           color: 'warning',
@@ -149,19 +149,19 @@ export function IconButton({
           color: 'warning',
           variant: 'light',
           class:
-            'bg-orange-50 text-t-warning hover:bg-orange-100 disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
+            'bg-b-warning text-t-warning hover:bg-b-warning-muted disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
         },
         {
           color: 'warning',
           variant: 'outline',
           class:
-            'bg-transparent text-t-warning border border-orange-200 hover:bg-orange-100 hover:dark:bg-orange-50 disabled:border-neutral-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
+            'bg-transparent text-t-warning border border-orange-200 hover:bg-b-warning-muted hover:dark:bg-b-warning disabled:border-neutral-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
         },
         {
           color: 'warning',
           variant: 'ghost',
           class:
-            'bg-transparent text-t-warning hover:bg-orange-100 hover:dark:bg-orange-50 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
+            'bg-transparent text-t-warning hover:bg-b-warning-muted hover:dark:bg-b-warning disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
         },
       ],
       defaultVariants: {

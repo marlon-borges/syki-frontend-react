@@ -1,12 +1,15 @@
 import { Header } from '@/components/header/Header';
 import { Sidebar } from '@/components/sidebar/Sidebar';
+import { useAuthContext } from '@/context/auth/useAuthContext';
 import { LayoutContextProvider } from '@/context/layout/useLayoutContext';
-import { Outlet } from 'react-router';
+import { Navigate, Outlet } from 'react-router';
 
 const AppLayout = () => {
+  const { isAuthenticated, isLoading } = useAuthContext();
+
   return (
     <LayoutContextProvider>
-      <Layout />
+      {!isLoading && !isAuthenticated ? <Navigate to="/login" /> : <Layout />}
     </LayoutContextProvider>
   );
 };
