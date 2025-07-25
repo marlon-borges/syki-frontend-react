@@ -1,8 +1,8 @@
 import { Button } from '@/components/Button';
 import { MyField } from '@/components/MyField';
 import { ClassroomCard } from './components/ClassroomCard';
-import NewClassroomDialog from './components/NewClassroomDialog';
-import { IconChevronDown, IconFilter2, IconSearch } from '@tabler/icons-react';
+import CreateClassroomDialog from './components/CreateClassroomDialog';
+import { IconChevronDown, IconFilter2, IconPlus, IconSearch } from '@tabler/icons-react';
 import { useGetGetClassrooms, type GetClassroomsOut } from '@/features/Academic/GetClassrooms/GetClassroomsClient';
 
 const ClassroomsPage = () => {
@@ -28,9 +28,13 @@ const ClassroomsPage = () => {
         <Button variant="outline" color="neutral" leftIcon={IconFilter2}>
           Filtros
         </Button>
+
         <div className="flex w-full flex-1 justify-end">
-          <NewClassroomDialog />
+          <CreateClassroomDialog>
+            <Button leftIcon={IconPlus}>Nova Sala</Button>
+          </CreateClassroomDialog>
         </div>
+
       </nav>
       <div className="flex w-full flex-wrap gap-4">
         {data?.map((classroom: GetClassroomsOut) => (
