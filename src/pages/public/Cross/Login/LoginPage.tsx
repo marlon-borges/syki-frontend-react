@@ -1,31 +1,33 @@
 import { Show } from '@/components/Show';
 import { Alert } from '@/components/Alert';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/Button';
 import { MyField } from '@/components/MyField';
-import { Link, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 import { IconButton } from '@/components/IconButton';
 import { AuthCard } from '@/components/auth/AuthCard';
 import { useShowPassword } from '@/utils/useShowPassword';
 import { useLoginMutation } from '@/features/Cross/Login/LoginClient';
 import { IconAlertTriangle, IconEye, IconEyeClosed } from '@tabler/icons-react';
+import { useAuthContext } from '@/context/auth/useAuthContext';
 
 const LoginPage = () => {
-  const nav = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { showPassword, togglePassword, inputRef } = useShowPassword();
-  const { mutate, isPending, isSuccess, isError, error } = useLoginMutation();
-
-  useEffect(() => {
-    if (isSuccess) {
-      nav('/academic/campi');
-    }
-  }, [isSuccess, nav]);
+  const { mutate, isPending, isError, error } = useLoginMutation();
+  const { login } = useAuthContext();
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    mutate({ email, password });
+    mutate(
+      { email, password },
+      {
+        onSuccess(data) {
+          login(data);
+        },
+      },
+    );
   };
 
   return (
@@ -40,7 +42,7 @@ const LoginPage = () => {
             placeholder="Digite seu e-mail"
             autoFocus
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
           />
           <MyField.ErrorText>""</MyField.ErrorText>
         </MyField.Root>
@@ -61,7 +63,7 @@ const LoginPage = () => {
             name="password"
             ref={inputRef}
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
           />
           <IconButton
             icon={showPassword ? IconEyeClosed : IconEye}
@@ -78,7 +80,7 @@ const LoginPage = () => {
         <Show when={isError}>
           <Alert
             icon={IconAlertTriangle}
-            title={error?.message ?? "Email ou senha incorretos"}
+            title={error?.message ?? 'Email ou senha incorretos'}
             variant="light"
             color="error"
             showCloseButton={false}
