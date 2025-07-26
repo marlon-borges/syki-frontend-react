@@ -38,14 +38,14 @@ export const ChartStudentsCapacity = ({ chartData, fillRate }: ChartStudentsCapa
             style={{ background: 'var(--color-gray-200)', borderRadius: 2 }}
             data={[
               {
-                students: 8, //chartData[0]
-                capacity: 12, //chartData[1]
+                students: chartData[0],
+                capacity: chartData[1],
               },
             ]}
             margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
             barCategoryGap={0}
           >
-            <XAxis type="number" domain={[0, 12]} hide /> {/* 12 = chartData[1] */}
+            <XAxis type="number" domain={[0, chartData[1]]} hide />
             <YAxis type="category" hide />
             <Bar dataKey="students" radius={[4, 4, 4, 4]} fill={getColorBarByFillRate} />
           </BarChart>
