@@ -22,7 +22,11 @@ const CreateClassroomDialog = ({ children, ...rootProps }: DialogRootProps) => {
   const { data } = useGetCampi();
 
   const collection = createListCollection({
-    items: data ?? [],
+    items:
+      data?.map(campus => ({
+        label: campus.name,
+        value: campus.id,
+      })) || [],
   });
 
   const { handleSubmit, formState, register, reset } = useForm<CreateClassroomProps>({
@@ -71,7 +75,6 @@ const CreateClassroomDialog = ({ children, ...rootProps }: DialogRootProps) => {
       <MyDialog.Content size="small-500">
         <MyDialog.Header>Nova sala de aula</MyDialog.Header>
         <MyDialog.Body className="space-y-4">
-
           <MySelect.MainRoot className="w-full" invalid={!!formState.errors.campusId}>
             <MySelect.Root collection={collection}>
               <MySelect.Label>Campus</MySelect.Label>
@@ -79,8 +82,8 @@ const CreateClassroomDialog = ({ children, ...rootProps }: DialogRootProps) => {
               <MySelect.Trigger placeholder="Selecione..." />
               <MySelect.Content hasPortal={false}>
                 {collection.items.map((item, i) => (
-                  <MySelect.Item key={`campus-select-item-${i}`} item={item.name}>
-                    {item.name}
+                  <MySelect.Item key={`campus-select-item-${i}`} item={item}>
+                    {item.label}
                   </MySelect.Item>
                 ))}
               </MySelect.Content>
