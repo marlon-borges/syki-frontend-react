@@ -2,6 +2,7 @@ import AcademicPeriodsPage from '@/pages/protected/Academic/AcademicPeriods/Acad
 import CampiPage from '@/pages/protected/Academic/Campi/CampiPage';
 import ClassDetailsPage from '@/pages/protected/Academic/Classes/ClassDetails/ClassDetailsPage';
 import ClassesPage from '@/pages/protected/Academic/Classes/ClassesPage';
+import ClassroomsPage from '@/pages/protected/Academic/Classrooms/ClassroomsPage';
 import CourseCurriculumsPage from '@/pages/protected/Academic/CourseCurriculums/CourseCurriculumsPage';
 import CourseOfferingsPage from '@/pages/protected/Academic/CourseOfferings/CourseOfferingsPage';
 import CoursesPage from '@/pages/protected/Academic/Courses/CoursesPage';
@@ -23,6 +24,7 @@ export default function AcademicRoutes() {
       <Route path="course-curriculums" element={<CourseCurriculumsPage />} />
       <Route path="course-offerings" element={<CourseOfferingsPage />} />
       <Route path="teachers" element={<TeachersPage />} />
+      <Route path="classrooms" element={<ClassroomsPage />} />
       <Route path="classes" element={<ClassesPage />}>
         <Route path=":id" element={<ClassDetailsPage />} />
       </Route>

@@ -12,6 +12,7 @@ import { Collapsible } from '@ark-ui/react';
 import {
   IconBackpack,
   IconChalkboard,
+  IconChalkboardTeacher,
   IconChartBarPopular,
   IconChecklist,
   IconLayoutSidebar,
@@ -63,6 +64,11 @@ const options = [
     icon: IconUsers,
     label: 'Professores',
     to: '/academic/teachers',
+  },
+  {
+    icon: IconChalkboardTeacher,
+    label: 'Salas',
+    to: '/academic/classrooms',
   },
   {
     icon: IconChalkboard,
