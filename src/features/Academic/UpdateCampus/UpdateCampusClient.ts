@@ -5,9 +5,10 @@ import { useMutation } from '@tanstack/react-query';
 
 export interface UpdateCampusProps {
   id: string;
-  name: string | null;
+  name: string;
   state: StatesType;
-  city: string | null;
+  city: string;
+  capacity: number;
 }
 
 async function UpdateCampusClient({ ...body }: UpdateCampusProps) {
