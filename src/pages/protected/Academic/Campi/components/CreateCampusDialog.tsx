@@ -15,7 +15,10 @@ const newCampusSchema = z.object({
   name: z.string().nonempty({ error: 'Nome é obrigatório' }),
   state: z.string().nonempty({ error: 'Estado é obrigatório' }),
   city: z.string().nonempty({ error: 'Cidade é obrigatória' }),
-  capacity: z.number().min(1, { message: 'Capacidade deve ser maior que 0' }),
+  capacity: z
+    .number({ error: 'Apenas números são permitidos' })
+    .nonnegative({ message: 'Capacidade não pode ser negativa' })
+    .min(1, { message: 'Capacidade deve ser maior que 0' }),
 });
 
 type NewCampusProps = z.infer<typeof newCampusSchema>;
@@ -57,7 +60,6 @@ export const CreateCampusDialog = ({ children, ...rootProps }: DialogRootProps) 
         },
       },
     );
-    console.log('Campus created:', data);
   }
 
   return (
@@ -102,7 +104,6 @@ export const CreateCampusDialog = ({ children, ...rootProps }: DialogRootProps) 
             <MyField.Label>Capacidade</MyField.Label>
             <MyField.Input
               placeholder="Ex: 100"
-              type="number"
               {...register('capacity', { setValueAs: v => Number(v) })}
             />
             <MyField.ErrorText>{formState.errors.capacity?.message}</MyField.ErrorText>
