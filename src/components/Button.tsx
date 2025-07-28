@@ -7,7 +7,7 @@ import { twMerge } from 'tailwind-merge';
 
 interface ButtonProps {
   size?: 'small' | 'default' | 'large';
-  color?: 'primary' | 'neutral' | 'success' | 'error' | 'warning';
+  color?: 'primary' | 'neutral' | 'success' | 'error' | 'warning' | 'info';
   variant?: 'filled' | 'light' | 'outline' | 'ghost' | 'link';
   children: ReactNode;
   leftIcon?: TablerIcon;
@@ -40,6 +40,7 @@ export function Button({
           success: '',
           error: '',
           warning: '',
+          info: '',
         },
         variant: {
           filled: '',
@@ -199,6 +200,36 @@ export function Button({
           variant: 'link',
           class:
             'bg-transparent text-t-warning px-0! hover:underline disabled:bg-transparent disabled:text-t-disabled disabled:no-underline disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
+        },
+        {
+          color: 'info',
+          variant: 'filled',
+          class:
+            'bg-blue-500 text-t-inverted hover:bg-blue-600 dark:hover:bg-blue-400 disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 dark:disabled:bg-neutral-200 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
+        },
+        {
+          color: 'info',
+          variant: 'light',
+          class:
+            'bg-b-info text-t-info hover:bg-b-info-muted disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
+        },
+        {
+          color: 'info',
+          variant: 'outline',
+          class:
+            'bg-transparent text-t-info border border-blue-200 hover:bg-b-info-muted hover:dark:bg-b-info disabled:border-neutral-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
+        },
+        {
+          color: 'info',
+          variant: 'ghost',
+          class:
+            'bg-transparent text-t-info hover:bg-b-info-muted hover:dark:bg-b-info disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
+        },
+        {
+          color: 'info',
+          variant: 'link',
+          class:
+            'bg-transparent text-t-info px-0! hover:underline disabled:bg-transparent disabled:text-t-disabled disabled:no-underline disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
         },
       ],
       defaultVariants: {

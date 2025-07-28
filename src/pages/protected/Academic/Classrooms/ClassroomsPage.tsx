@@ -11,13 +11,13 @@ import {
 const ClassroomsPage = () => {
   const { data, isLoading, isError, error } = useGetClassrooms();
 
-  // if (isLoading) {
-  //   return <div>Carregando salas...</div>;
-  // }
+  if (isLoading) {
+    return <div>Carregando salas...</div>;
+  }
 
-  // if (isError) {
-  //   return <div>Erro ao carregar salas: {error?.message}</div>;
-  // }
+  if (isError) {
+    return <div>Erro ao carregar salas: {error?.message}</div>;
+  }
 
   return (
     <section className="p-6">

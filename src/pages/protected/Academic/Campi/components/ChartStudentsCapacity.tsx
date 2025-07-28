@@ -30,6 +30,7 @@ export const ChartStudentsCapacity = ({ chartData, fillRate }: ChartStudentsCapa
       label={`${chartData[0]}/${chartData[1]} estudantes`}
       description={`${fillRate}% - ${getStatusByFillRate}`}
       placement="top"
+      openDelay={150}
     >
       <div className="mt-2 box-content h-1.5 px-4 pt-2 pb-2">
         <ResponsiveContainer width="100%" height="100%">

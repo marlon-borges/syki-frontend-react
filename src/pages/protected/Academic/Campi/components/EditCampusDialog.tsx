@@ -1,17 +1,23 @@
 import { MyDialog } from '@/components/Dialog';
 import { MyField } from '@/components/MyField';
-import { MySelect } from '@/components/Select';
-import { useCreateCampusMutation } from '@/features/Academic/CreateCampus/CreateCampusClient';
-import { useDialog } from '@/hooks/useDialog';
-import { STATES_OPTIONS } from '@/pages/protected/Academic/Campi/types/FullNameStates';
+import { MySelect, type MySelectCollectionList } from '@/components/Select';
+import type { CampusOut } from '@/features/Academic/GetCampi/GetCampiClient';
+import { useUpdateCampusMutation } from '@/features/Academic/UpdateCampus/UpdateCampusClient';
 import type { StatesType } from '@/types/StatesType';
-import { createListCollection, type DialogRootProps } from '@ark-ui/react';
+import { type DialogRootProps } from '@ark-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
 
+interface EditCampusDialogProps extends DialogRootProps {
+  data: CampusOut;
+  stateCollection: MySelectCollectionList;
+  onSuccess?: () => void;
+}
+
 const newCampusSchema = z.object({
+  id: z.string().nonempty({ error: 'ID é obrigatório' }),
   name: z.string().nonempty({ error: 'Nome é obrigatório' }),
   state: z.string().nonempty({ error: 'Estado é obrigatório' }),
   city: z.string().nonempty({ error: 'Cidade é obrigatória' }),
@@ -23,31 +29,32 @@ const newCampusSchema = z.object({
 
 type NewCampusProps = z.infer<typeof newCampusSchema>;
 
-export const CreateCampusDialog = ({ children, ...rootProps }: DialogRootProps) => {
-  const collection = createListCollection({
-    items: STATES_OPTIONS.map(state => ({
-      label: state.label,
-      value: state.value,
-    })),
-  });
-
-  const { handleSubmit, formState, register, reset } = useForm<NewCampusProps>({
+export const EditCampusDialog = ({
+  data,
+  stateCollection,
+  onSuccess,
+  children,
+  ...rootProps
+}: EditCampusDialogProps) => {
+  const { handleSubmit, formState, register, reset, watch, setValue } = useForm<NewCampusProps>({
     resolver: zodResolver(newCampusSchema),
     defaultValues: {
-      name: '',
-      state: '',
-      city: '',
-      capacity: 0,
+      id: data.id,
+      name: data.name,
+      state: data.state,
+      city: data.city,
+      capacity: data.capacity,
     },
   });
 
   const queryClient = useQueryClient();
-  const { mutate } = useCreateCampusMutation();
-  const { closeDialog, isOpen } = useDialog();
+  const { mutate } = useUpdateCampusMutation();
+  const stateChange = watch('state');
 
   function onSubmit(data: NewCampusProps) {
     mutate(
       {
+        id: data.id,
         city: data.city,
         name: data.name,
         state: data.state as StatesType,
@@ -55,28 +62,27 @@ export const CreateCampusDialog = ({ children, ...rootProps }: DialogRootProps) 
       },
       {
         onSuccess: () => {
-          closeDialog(false);
-          reset();
+          reset({
+            id: data.id,
+            city: data.city,
+            name: data.name,
+            state: data.state as StatesType,
+            capacity: data.capacity,
+          });
           queryClient.invalidateQueries({
             queryKey: ['get-campi'],
           });
+          onSuccess?.();
         },
       },
     );
   }
 
   return (
-    <MyDialog.Root
-      {...rootProps}
-      open={isOpen}
-      onOpenChange={e => closeDialog(e.open)}
-      unmountOnExit
-      closeOnInteractOutside={false}
-      onExitComplete={reset}
-    >
-      <MyDialog.Trigger>{children}</MyDialog.Trigger>
+    <MyDialog.Root {...rootProps} closeOnInteractOutside={false} onExitComplete={reset}>
+      <MyDialog.Trigger asChild>{children}</MyDialog.Trigger>
       <MyDialog.Content size="small-500">
-        <MyDialog.Header>Novo campus</MyDialog.Header>
+        <MyDialog.Header>Editar campus</MyDialog.Header>
         <MyDialog.Body className="space-y-4">
           <MyField.Root invalid={!!formState.errors.name}>
             <MyField.Label>Nome</MyField.Label>
@@ -85,7 +91,9 @@ export const CreateCampusDialog = ({ children, ...rootProps }: DialogRootProps) 
           </MyField.Root>
           <MySelect
             classNames={{ MainRoot: 'w-full' }}
-            collection={collection}
+            collection={stateCollection}
+            value={stateChange ? [stateChange] : []}
+            onValueChange={details => setValue('state', details.value[0])}
             Label="Estado"
             register={register('state')}
             placeholder="Selecione..."
@@ -109,7 +117,7 @@ export const CreateCampusDialog = ({ children, ...rootProps }: DialogRootProps) 
         </MyDialog.Body>
         <MyDialog.Footer
           hasTertiary={false}
-          primaryText="Criar campus"
+          primaryText="Salvar alteração"
           onPrimary={handleSubmit(onSubmit)}
         />
       </MyDialog.Content>

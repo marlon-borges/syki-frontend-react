@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 export function useDialog() {
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const openDialog = () => {
+  const openDialog = useCallback(() => {
     setTimeout(() => {
       setIsOpen(true);
     }, 2);
-  };
+  }, [isOpen]);
 
   const closeDialog = (state: boolean) => {
     if (state) {

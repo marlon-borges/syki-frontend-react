@@ -1,3 +1,4 @@
+import { Show } from '@/components/Show';
 import {
   Field,
   Portal,
@@ -12,6 +13,7 @@ import {
 import { IconCheck, IconChevronDown, type TablerIcon } from '@tabler/icons-react';
 import { cva } from 'class-variance-authority';
 import type { ReactNode } from 'react';
+import type { UseFormRegisterReturn } from 'react-hook-form';
 import { twMerge } from 'tailwind-merge';
 
 /* 
@@ -242,7 +244,7 @@ const HiddenSelect = ({ ...hiddenSelectProps }: SelectHiddenSelectProps) => {
   return <Select.HiddenSelect {...hiddenSelectProps} />;
 };
 
-export const MySelect = {
+export const BaseSelect = {
   MainRoot: FieldRoot,
   Root,
   Label,
@@ -252,4 +254,94 @@ export const MySelect = {
   Item,
   ErrorText: FieldErrorText,
   HelperText: FieldHelperText,
+};
+
+type ListSelectionItem = {
+  label: string;
+  value: string;
+  disabled?: boolean;
+  icon?: TablerIcon;
+  size?: 'small' | 'default' | 'large';
+};
+
+export interface MySelectProps {
+  collection: MySelectCollectionList;
+  invalid?: boolean;
+  defaultValue?: string[];
+  classNames?: {
+    MainRoot?: string;
+    Root?: string;
+    Label?: string;
+    Trigger?: string;
+    Content?: string;
+    Item?: string;
+    HelperText?: string;
+    ErrorText?: string;
+  };
+  Label?: string;
+  HelperText?: string;
+  ErrorText?: string;
+  register?: UseFormRegisterReturn;
+  placeholder?: string;
+  hasPortal?: boolean;
+  onValueChange?: (value: Select.ValueChangeDetails) => void;
+  value?: string[];
+}
+
+export interface MySelectCollectionList extends Select.ListCollection {
+  items: ListSelectionItem[];
+}
+
+export const MySelect = ({
+  collection,
+  classNames,
+  Label,
+  HelperText,
+  ErrorText,
+  register,
+  placeholder,
+  hasPortal,
+  invalid,
+  defaultValue,
+  onValueChange,
+  value,
+}: MySelectProps) => {
+  return (
+    <BaseSelect.MainRoot className={classNames?.MainRoot} invalid={invalid}>
+      <BaseSelect.Root
+        collection={collection}
+        className={classNames?.Root}
+        onValueChange={onValueChange}
+        value={value}
+        defaultValue={defaultValue}
+      >
+        <Show when={!!Label}>
+          <BaseSelect.Label className={classNames?.Label}>{Label}</BaseSelect.Label>
+        </Show>
+        <BaseSelect.HookFormRegister {...register} />
+        <BaseSelect.Trigger placeholder={placeholder} className={classNames?.Trigger} />
+        <BaseSelect.Content hasPortal={hasPortal} className={classNames?.Content}>
+          {collection.items.map((item, i) => (
+            <BaseSelect.Item
+              key={`select-item-${i}`}
+              item={item}
+              icon={item.icon}
+              size={item.size}
+              className={classNames?.Item}
+            >
+              {item.label}
+            </BaseSelect.Item>
+          ))}
+        </BaseSelect.Content>
+      </BaseSelect.Root>
+      <Show when={!!HelperText}>
+        <BaseSelect.HelperText className={classNames?.HelperText}>
+          {HelperText}
+        </BaseSelect.HelperText>
+      </Show>
+      <Show when={!!ErrorText}>
+        <BaseSelect.ErrorText className={classNames?.ErrorText}>{ErrorText}</BaseSelect.ErrorText>
+      </Show>
+    </BaseSelect.MainRoot>
+  );
 };

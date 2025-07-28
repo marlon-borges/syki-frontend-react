@@ -26,4 +26,4 @@ export const STATES_OPTIONS = [
   { label: 'São Paulo, SP', value: 'SP' },
   { label: 'Sergipe, SE', value: 'SE' },
   { label: 'Tocantins, TO', value: 'TO' },
-] as const;
+];

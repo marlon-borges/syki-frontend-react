@@ -75,21 +75,15 @@ const CreateClassroomDialog = ({ children, ...rootProps }: DialogRootProps) => {
       <MyDialog.Content size="small-500">
         <MyDialog.Header>Nova sala de aula</MyDialog.Header>
         <MyDialog.Body className="space-y-4">
-          <MySelect.MainRoot className="w-full" invalid={!!formState.errors.campusId}>
-            <MySelect.Root collection={collection}>
-              <MySelect.Label>Campus</MySelect.Label>
-              <MySelect.HookFormRegister {...register('campusId')} />
-              <MySelect.Trigger placeholder="Selecione..." />
-              <MySelect.Content hasPortal={false}>
-                {collection.items.map((item, i) => (
-                  <MySelect.Item key={`campus-select-item-${i}`} item={item}>
-                    {item.label}
-                  </MySelect.Item>
-                ))}
-              </MySelect.Content>
-            </MySelect.Root>
-            <MySelect.ErrorText>{formState.errors.campusId?.message}</MySelect.ErrorText>
-          </MySelect.MainRoot>
+          <MySelect
+            classNames={{ MainRoot: 'w-full' }}
+            collection={collection}
+            Label="Campus"
+            register={register('campusId')}
+            placeholder="Selecione..."
+            hasPortal={false}
+            ErrorText={formState.errors.campusId?.message}
+          />
 
           <MyField.Root invalid={!!formState.errors.name}>
             <MyField.Label>Nome</MyField.Label>

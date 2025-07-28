@@ -4,6 +4,7 @@ import {
   Dialog,
   Portal,
   type DialogContentProps,
+  type DialogContextProps,
   type DialogDescriptionProps,
   type DialogRootProps,
   type DialogTitleProps,
@@ -172,9 +173,14 @@ const Footer = ({
   );
 };
 
+const Context = ({ ...contextProps }: DialogContextProps) => {
+  return <Dialog.Context {...contextProps} />;
+};
+
 export const MyDialog = {
   Root,
   Trigger,
+  Context,
   Content,
   Header,
   Body,
