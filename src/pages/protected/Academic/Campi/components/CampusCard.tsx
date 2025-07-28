@@ -7,6 +7,13 @@ import { useState } from 'react';
 import placeholderCampusLogo from '@/assets/placeholder-campus-logo.svg';
 import { twMerge } from 'tailwind-merge';
 import { Dropdown } from '@/components/Dropdown';
+import { EditCampusDialog } from '@/pages/protected/Academic/Campi/components/EditCampusDialog';
+import { MyDialog } from '@/components/Dialog';
+import { createListCollection } from '@ark-ui/react';
+import { STATES_OPTIONS } from '@/pages/protected/Academic/Campi/types/FullNameStates';
+import type { CampusOut } from '@/features/Academic/GetCampi/GetCampiClient';
+import { MyConfirmDialog, MyConfirmDialogBase } from '@/components/ConfirmDialog';
+import { DeleteCampusDialog } from '@/pages/protected/Academic/Campi/components/DeleteCampusDialog';
 
 export interface CampusCardProps extends React.ComponentProps<'div'> {
   photoSrc?: string;
@@ -14,6 +21,9 @@ export interface CampusCardProps extends React.ComponentProps<'div'> {
   state: [city: string, state: string];
   chartData: [students: number, capacity: number];
   fillRate: number;
+  data: CampusOut;
+  onEdit?: () => void;
+  onDelete?: () => void;
 }
 
 export const CampusCard = ({
@@ -22,14 +32,23 @@ export const CampusCard = ({
   state,
   chartData,
   fillRate,
+  onEdit,
+  onDelete,
+  data,
   ...divProps
 }: CampusCardProps) => {
   const [imgLoading, setImageLoading] = useState<boolean>(false);
   const [imgBackdropLoading, setImgBackdropLoading] = useState<boolean>(false);
+  const [hovered, setHovered] = useState<boolean>(false);
+  const [opened, setOpened] = useState<boolean>(false);
+
+  const stateCollection = createListCollection({
+    items: STATES_OPTIONS,
+  });
 
   return (
     <div
-      className="relative max-w-64 min-w-56 flex-1 overflow-hidden rounded-xl border border-s-default bg-b-default transition-all duration-150 hover:shadow-bottom-300"
+      className="relative h-fit max-w-64 min-w-56 flex-1 overflow-hidden rounded-xl border border-s-default bg-b-default transition-all duration-150 hover:shadow-bottom-300"
       {...divProps}
     >
       <figure className="relative z-[0] max-h-20 min-h-20 overflow-hidden">
@@ -65,31 +84,70 @@ export const CampusCard = ({
           !imgLoading ? 'opacity-0' : 'opacity-100',
         )}
       />
-      <div className="space-y-1.5 px-4 pt-2">
-        <p className="line-clamp-2 font-display text-lg font-semibold text-t-default">{name}</p>
+      <div className="space-y-1.5 px-4 pt-2 transition-all duration-150">
+        <p
+          className={twMerge(
+            'overflow-hidden font-display text-lg font-semibold text-t-default transition-all duration-150',
+            hovered ? 'line-clamp-2 max-h-16' : 'line-clamp-1 max-h-7',
+          )}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+        >
+          {name}
+        </p>
         <span className="flex items-center gap-1.5 text-sm font-normal text-t-muted">
-          <IconMapPin stroke={2.25} size={18} className="text-t-subtle!" />{' '}
-          {`${state[0]}, ${state[1]}`}
+          <IconMapPin stroke={2.25} size={18} className="shrink-0 text-t-subtle!" />{' '}
+          <div className="flex min-w-0">
+            <span className="truncate">{`${state[0]}`}</span>
+            <span className="whitespace-nowrap">{`, ${state[1]}`}</span>
+          </div>
         </span>
       </div>
       <ChartStudentsCapacity fillRate={fillRate} chartData={chartData} />
       <div className="flex items-center gap-2 px-2 pt-1 pb-2">
-        <Button variant="light" color="neutral" size="small" classNames="flex-1">
-          Editar
-        </Button>
-        <Dropdown.Root>
-          <Dropdown.Trigger>
-            <IconButton icon={IconDotsVertical} variant="light" color="neutral" size="small" />
-          </Dropdown.Trigger>
-          <Dropdown.Content>
-            <Dropdown.Item value="edit-campus" icon={IconPencil}>
-              Editar
-            </Dropdown.Item>
-            <Dropdown.Item value="delete-campus" icon={IconTrash} variant="error">
-              Excluir
-            </Dropdown.Item>
-          </Dropdown.Content>
-        </Dropdown.Root>
+        <EditCampusDialog
+          stateCollection={stateCollection}
+          data={data}
+          open={opened}
+          onSuccess={() => setOpened(false)}
+          onOpenChange={v => setOpened(v.open)}
+        >
+          <MyDialog.Context>
+            {context => (
+              <>
+                <Button
+                  variant="light"
+                  color="neutral"
+                  size="small"
+                  classNames="flex-1"
+                  onClick={() => context.setOpen(true)}
+                >
+                  Editar
+                </Button>
+                <Dropdown.Root>
+                  <Dropdown.Trigger>
+                    <IconButton
+                      icon={IconDotsVertical}
+                      variant="light"
+                      color="neutral"
+                      size="small"
+                    />
+                  </Dropdown.Trigger>
+                  <Dropdown.Content>
+                    <Dropdown.Item
+                      value="edit-campus"
+                      icon={IconPencil}
+                      onClick={() => context.setOpen(true)}
+                    >
+                      Editar
+                    </Dropdown.Item>
+                    <DeleteCampusDialog name={name} />
+                  </Dropdown.Content>
+                </Dropdown.Root>
+              </>
+            )}
+          </MyDialog.Context>
+        </EditCampusDialog>
       </div>
     </div>
   );
