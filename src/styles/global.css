@@ -311,7 +311,7 @@
     0px -2px 2px -1px rgba(58, 69, 92, 0.04), 0px -16px 24px -6px rgba(58, 69, 92, 0.16);
 }
 
-html.dark {
+.dark {
   --color-blue-50: #141925;
   --color-blue-100: #162035;
   --color-blue-200: #192746;

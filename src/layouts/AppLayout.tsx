@@ -1,5 +1,6 @@
 import { Header } from '@/components/header/Header';
 import { Sidebar } from '@/components/sidebar/Sidebar';
+import { MyToast } from '@/components/Toast';
 import { useAuthContext } from '@/context/auth/useAuthContext';
 import { LayoutContextProvider } from '@/context/layout/useLayoutContext';
 import { Navigate, Outlet } from 'react-router';
@@ -21,6 +22,7 @@ const Layout = () => {
       <div className="flex flex-1 flex-col">
         <Header />
         <main className="flex-1 overflow-auto">
+          <MyToast />
           <Outlet />
         </main>
       </div>
