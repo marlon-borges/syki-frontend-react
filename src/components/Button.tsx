@@ -256,7 +256,7 @@ export function Button({
       <Show when={!!LeftIcon}>
         {LeftIcon && <LeftIcon stroke="2.25" size={18} className="shrink-0" />}
       </Show>
-      <span className="px-0.5 text-sm font-medium whitespace-nowrap">{children}</span>
+      <span className={twMerge("text-sm font-medium whitespace-nowrap", variant === 'link' ? 'px-0' : 'px-0.5')}>{children}</span>
       <Show when={!!RightIcon}>
         {RightIcon && <RightIcon stroke="2.25" size={18} className="shrink-0" />}
       </Show>
