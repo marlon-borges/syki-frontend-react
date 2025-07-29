@@ -28,7 +28,7 @@ export const ChartStudentsCapacity = ({ chartData, fillRate }: ChartStudentsCapa
   return (
     <Tooltip
       label={`${chartData[0]}/${chartData[1]} estudantes`}
-      description={`${fillRate}% - ${getStatusByFillRate}`}
+      description={`${fillRate.toFixed(0)}% - ${getStatusByFillRate}`}
       placement="top"
       openDelay={150}
     >
@@ -37,6 +37,7 @@ export const ChartStudentsCapacity = ({ chartData, fillRate }: ChartStudentsCapa
           <BarChart
             layout="vertical"
             style={{ background: 'var(--color-gray-200)', borderRadius: 2 }}
+            tabIndex={-1}
             data={[
               {
                 students: chartData[0],

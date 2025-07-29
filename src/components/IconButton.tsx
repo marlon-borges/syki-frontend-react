@@ -47,121 +47,121 @@ export function IconButton({
           color: 'primary',
           variant: 'filled',
           class:
-            'bg-purple-500 text-t-inverted hover:bg-purple-600 hover:dark:bg-purple-400 disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default dark:disabled:bg-neutral-200 focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
+            'bg-purple-500 text-t-inverted hover:bg-purple-600 hover:dark:bg-purple-400 disabled:bg-gray-200 disabled:text-t-disabled disabled:cursor-default dark:disabled:bg-gray-200 focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
         },
         {
           color: 'primary',
           variant: 'light',
           class:
-            'bg-b-accent text-t-accent hover:bg-b-accent-muted disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
+            'bg-b-accent text-t-accent hover:bg-b-accent-muted disabled:bg-gray-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
         },
         {
           color: 'primary',
           variant: 'outline',
           class:
-            'bg-transparent text-t-accent border border-purple-200 hover:bg-b-accent disabled:border-neutral-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
+            'bg-transparent text-t-accent border border-purple-200 hover:bg-b-accent disabled:border-gray-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
         },
         {
           color: 'primary',
           variant: 'ghost',
           class:
-            'bg-transparent text-t-accent hover:bg-b-accent disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
+            'bg-transparent text-t-accent hover:bg-b-accent disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
         },
         {
           color: 'neutral',
           variant: 'filled',
           class:
-            'bg-neutral-900 dark:bg-neutral-300 hover:dark:bg-neutral-200 text-t-inverted hover:bg-neutral-800 dark:disabled:bg-neutral-200 disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
+            'bg-gray-900 dark:bg-gray-300 hover:dark:bg-gray-200 text-t-inverted hover:bg-gray-800 dark:disabled:bg-gray-200 disabled:bg-gray-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
         },
         {
           color: 'neutral',
           variant: 'light',
           class:
-            'bg-b-muted dark:bg-neutral-200 hover:dark:bg-neutral-300 text-t-muted hover:bg-b-emphasized dark:disabled:bg-neutral-200 disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
+            'bg-b-muted dark:bg-gray-200 hover:dark:bg-gray-300 text-t-muted hover:bg-b-emphasized dark:disabled:bg-gray-200 disabled:bg-gray-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
         },
         {
           color: 'neutral',
           variant: 'outline',
           class:
-            'bg-transparent dark:bg-transparent border border-neutral-200 dark:border-neutral-300 hover:dark:bg-neutral-200 text-t-muted hover:bg-neutral-100 disabled:bg-transparent dark:disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
+            'bg-transparent dark:bg-transparent border border-gray-200 dark:border-gray-300 hover:dark:bg-gray-200 text-t-muted hover:bg-gray-100 disabled:bg-transparent dark:disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
         },
         {
           color: 'neutral',
           variant: 'ghost',
           class:
-            'bg-transparent dark:bg-transparent hover:dark:bg-neutral-200 text-t-muted hover:bg-neutral-100 disabled:bg-transparent dark:disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
+            'bg-transparent dark:bg-transparent hover:dark:bg-gray-200 text-t-muted hover:bg-gray-100 disabled:bg-transparent dark:disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
         },
         {
           color: 'success',
           variant: 'filled',
           class:
-            'bg-green-500 text-t-inverted hover:bg-green-600 dark:hover:bg-green-400 disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 dark:disabled:bg-neutral-200 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
+            'bg-green-500 text-t-inverted hover:bg-green-600 dark:hover:bg-green-400 disabled:bg-gray-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 dark:disabled:bg-gray-200 focus-visible:ring-gray-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
         },
         {
           color: 'success',
           variant: 'light',
           class:
-            'bg-b-success text-t-success hover:bg-b-success-muted disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
+            'bg-b-success text-t-success hover:bg-b-success-muted disabled:bg-gray-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
         },
         {
           color: 'success',
           variant: 'outline',
           class:
-            'bg-transparent text-t-success border border-green-200 hover:bg-b-success-muted dark:hover:bg-green-50 disabled:border-neutral-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
+            'bg-transparent text-t-success border border-green-200 hover:bg-b-success-muted dark:hover:bg-green-50 disabled:border-gray-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
         },
         {
           color: 'success',
           variant: 'ghost',
           class:
-            'bg-transparent text-t-success hover:bg-b-success-muted hover:dark:bg-b-success disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
+            'bg-transparent text-t-success hover:bg-b-success-muted hover:dark:bg-b-success disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
         },
         {
           color: 'error',
           variant: 'filled',
           class:
-            'bg-red-500 text-t-inverted hover:bg-red-600 dark:hover:bg-red-400 disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 dark:disabled:bg-neutral-200 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
+            'bg-red-500 text-t-inverted hover:bg-red-600 dark:hover:bg-red-400 disabled:bg-gray-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 dark:disabled:bg-gray-200 focus-visible:ring-gray-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
         },
         {
           color: 'error',
           variant: 'light',
           class:
-            'bg-b-error text-t-error hover:bg-b-error-muted disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
+            'bg-b-error text-t-error hover:bg-b-error-muted disabled:bg-gray-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
         },
         {
           color: 'error',
           variant: 'outline',
           class:
-            'bg-transparent text-t-error border border-red-200 hover:bg-b-error-muted hover:dark:bg-red-50 disabled:border-neutral-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
+            'bg-transparent text-t-error border border-red-200 hover:bg-b-error-muted hover:dark:bg-red-50 disabled:border-gray-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
         },
         {
           color: 'error',
           variant: 'ghost',
           class:
-            'bg-transparent text-t-error hover:bg-b-error-muted hover:dark:bg-b-error disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
+            'bg-transparent text-t-error hover:bg-b-error-muted hover:dark:bg-b-error disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
         },
         {
           color: 'warning',
           variant: 'filled',
           class:
-            'bg-orange-500 text-t-inverted hover:bg-orange-600 dark:hover:bg-orange-400 disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 dark:disabled:bg-neutral-200 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
+            'bg-orange-500 text-t-inverted hover:bg-orange-600 dark:hover:bg-orange-400 disabled:bg-gray-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 dark:disabled:bg-gray-200 focus-visible:ring-gray-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
         },
         {
           color: 'warning',
           variant: 'light',
           class:
-            'bg-b-warning text-t-warning hover:bg-b-warning-muted disabled:bg-neutral-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
+            'bg-b-warning text-t-warning hover:bg-b-warning-muted disabled:bg-gray-200 disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default  focus-visible:outline-none',
         },
         {
           color: 'warning',
           variant: 'outline',
           class:
-            'bg-transparent text-t-warning border border-orange-200 hover:bg-b-warning-muted hover:dark:bg-b-warning disabled:border-neutral-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
+            'bg-transparent text-t-warning border border-orange-200 hover:bg-b-warning-muted hover:dark:bg-b-warning disabled:border-gray-200 disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-b-default focus-visible:ring-offset-2 focus-visible:outline-none',
         },
         {
           color: 'warning',
           variant: 'ghost',
           class:
-            'bg-transparent text-t-warning hover:bg-b-warning-muted hover:dark:bg-b-warning disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-neutral-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
+            'bg-transparent text-t-warning hover:bg-b-warning-muted hover:dark:bg-b-warning disabled:bg-transparent disabled:text-t-disabled disabled:cursor-default focus-visible:ring-2 focus-visible:ring-gray-200 focus-visible:ring-offset-2 focus-visible:ring-offset-b-default focus-visible:outline-none',
         },
       ],
       defaultVariants: {

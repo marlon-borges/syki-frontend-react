@@ -1,7 +1,7 @@
 import { Button } from '@/components/Button';
 import { IconButton } from '@/components/IconButton';
 import { ChartStudentsCapacity } from '@/pages/protected/Academic/Campi/components/ChartStudentsCapacity';
-import { IconDotsVertical, IconMapPin, IconPencil, IconTrash } from '@tabler/icons-react';
+import { IconDotsVertical, IconMapPin, IconPencil } from '@tabler/icons-react';
 import type React from 'react';
 import { useState } from 'react';
 import placeholderCampusLogo from '@/assets/placeholder-campus-logo.svg';
@@ -12,7 +12,6 @@ import { MyDialog } from '@/components/Dialog';
 import { createListCollection } from '@ark-ui/react';
 import { STATES_OPTIONS } from '@/pages/protected/Academic/Campi/types/FullNameStates';
 import type { CampusOut } from '@/features/Academic/GetCampi/GetCampiClient';
-import { MyConfirmDialog, MyConfirmDialogBase } from '@/components/ConfirmDialog';
 import { DeleteCampusDialog } from '@/pages/protected/Academic/Campi/components/DeleteCampusDialog';
 
 export interface CampusCardProps extends React.ComponentProps<'div'> {
