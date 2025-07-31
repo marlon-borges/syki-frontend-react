@@ -1,6 +1,7 @@
 import { MyDialog } from '@/components/Dialog';
 import { MyField } from '@/components/MyField';
 import { MySelect, type MySelectCollectionList } from '@/components/Select';
+import { toaster } from '@/components/Toast';
 import type { CampusOut } from '@/features/Academic/GetCampi/GetCampiClient';
 import { useUpdateCampusMutation } from '@/features/Academic/UpdateCampus/UpdateCampusClient';
 import type { StatesType } from '@/types/StatesType';
@@ -52,6 +53,11 @@ export const EditCampusDialog = ({
   const stateChange = watch('state');
 
   function onSubmit(data: NewCampusProps) {
+    toaster.create({
+      type: 'loading',
+      title: 'Atualizando campus...',
+      id: 'updating-campus',
+    });
     mutate(
       {
         id: data.id,
@@ -69,10 +75,23 @@ export const EditCampusDialog = ({
             state: data.state as StatesType,
             capacity: data.capacity,
           });
+          toaster.update('updating-campus', {
+            title: 'Campus editado!',
+            type: 'success',
+            closable: true,
+          });
           queryClient.invalidateQueries({
             queryKey: ['get-campi'],
           });
           onSuccess?.();
+        },
+        onError() {
+          toaster.update('updating-campus', {
+            title: 'Erro ao editar o campus!',
+            description: 'Por favor, tente novamente.',
+            type: 'error',
+            closable: true,
+          });
         },
       },
     );
