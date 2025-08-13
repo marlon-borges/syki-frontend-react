@@ -20,3 +20,5 @@ dist/
 
 # GITHUB
 .github
+
+.dev-annotations.md
