@@ -565,6 +565,70 @@
   src: url('../assets/fonts/InterDisplay-ExtraBold.woff2') format('woff2');
 }
 
+.text-10-medium {
+  @apply text-[10px] leading-3.5 font-medium;
+}
+
+.text-10-semibold {
+  @apply text-[10px] leading-3.5 font-semibold;
+}
+
+.text-10-bold {
+  @apply text-[10px] leading-3.5 font-bold;
+}
+
+.text-12 {
+  @apply text-xs font-normal;
+}
+
+.text-12-medium {
+  @apply text-xs font-medium;
+}
+
+.text-12-semibold {
+  @apply text-xs font-semibold;
+}
+
+.text-12-bold {
+  @apply text-xs font-bold;
+}
+
+.text-14 {
+  @apply text-sm font-normal;
+}
+
+.text-14-medium {
+  @apply text-sm font-medium;
+}
+
+.text-14-semibold {
+  @apply text-sm font-semibold;
+}
+
+.text-14-bold {
+  @apply text-sm font-bold;
+}
+
+.text-18-semibold {
+  @apply text-lg font-semibold;
+}
+
+.text-18-bold {
+  @apply text-lg font-bold;
+}
+
+.text-20-semibold {
+  @apply text-xl font-semibold;
+}
+
+.text-20-bold {
+  @apply text-xl font-bold;
+}
+
+.focus-ring {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-s-default focus-visible:ring-offset-2 focus-visible:ring-offset-b-default;
+}
+
 body {
   -webkit-font-smoothing: 'antialiased';
   background-color: var(--color-bg_secondary);

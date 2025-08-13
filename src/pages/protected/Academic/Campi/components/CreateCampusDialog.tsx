@@ -66,6 +66,7 @@ export const CreateCampusDialog = ({ children, ...rootProps }: DialogRootProps) 
           toaster.update('creating-campus', {
             title: 'Campus criado!',
             description: `Você já pode vê-lo na lista.`,
+            type: 'success',
             closable: true,
           });
           queryClient.invalidateQueries({
