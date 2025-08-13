@@ -1,11 +1,29 @@
-import TeacherActivitiesDetailsPage from '@/pages/protected/Teacher/Classes/ClassDetails/Activities/ActivitiesDetails/TeacherActivitiesDetailsPage';
-import TeacherActivitiesPage from '@/pages/protected/Teacher/Classes/ClassDetails/Activities/TeacherActivitiesPage';
-import TeacherAttendancePage from '@/pages/protected/Teacher/Classes/ClassDetails/Attendance/TeacherAttendancePage';
-import TeacherStudentsPage from '@/pages/protected/Teacher/Classes/ClassDetails/Students/TeacherStudentsPage';
-import TeacherClassDetailsPage from '@/pages/protected/Teacher/Classes/ClassDetails/TeacherClassDetailsPage';
-import TeacherClassesPage from '@/pages/protected/Teacher/Classes/TeacherClassesPage';
+import { lazy } from 'react';
+const TeacherActivitiesDetailsPage = lazy(
+  () =>
+    import(
+      '@/pages/protected/Teacher/Classes/ClassDetails/Activities/ActivitiesDetails/TeacherActivitiesDetailsPage'
+    ),
+);
+const TeacherActivitiesPage = lazy(
+  () => import('@/pages/protected/Teacher/Classes/ClassDetails/Activities/TeacherActivitiesPage'),
+);
+const TeacherAttendancePage = lazy(
+  () => import('@/pages/protected/Teacher/Classes/ClassDetails/Attendance/TeacherAttendancePage'),
+);
+const TeacherStudentsPage = lazy(
+  () => import('@/pages/protected/Teacher/Classes/ClassDetails/Students/TeacherStudentsPage'),
+);
+const TeacherClassDetailsPage = lazy(
+  () => import('@/pages/protected/Teacher/Classes/ClassDetails/TeacherClassDetailsPage'),
+);
+const TeacherClassesPage = lazy(
+  () => import('@/pages/protected/Teacher/Classes/TeacherClassesPage'),
+);
+const TeacherSchedulePage = lazy(
+  () => import('@/pages/protected/Teacher/Schedule/TeacherSchedulePage'),
+);
 import TeacherHomePage from '@/pages/protected/Teacher/Home/TeacherHomePage';
-import TeacherSchedulePage from '@/pages/protected/Teacher/Schedule/TeacherSchedulePage';
 import { Route } from 'react-router';
 
 export default function TeacherRoutes() {

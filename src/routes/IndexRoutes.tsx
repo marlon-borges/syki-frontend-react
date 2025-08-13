@@ -1,18 +1,25 @@
 import App from '@/App';
 import AppLayout from '@/layouts/AppLayout';
 import AuthLayout from '@/layouts/AuthLayout';
-import LoginPage from '@/pages/public/Cross/Login/LoginPage';
-import LoginMfaPage from '@/pages/public/Cross/LoginMfa/LoginMfaPage';
-import NotFoundPage from '@/pages/public/Cross/NotFound/NotFoundPage';
-import RegisterPage from '@/pages/public/Cross/Register/RegisterPage';
-import RegisterSetupPage from '@/pages/public/Cross/RegisterSetup/RegisterSetupPage';
-import ResetPasswordPage from '@/pages/public/Cross/ResetPassword/ResetPasswordPage';
-import SendResetPasswordPage from '@/pages/public/Cross/SendResetPassword/SendResetPasswordPage';
-import UnauthorizedPage from '@/pages/public/Cross/Unauthorized/UnauthorizedPage';
+import { lazy } from 'react';
+import { Navigate, Route, Routes } from 'react-router';
+const LoginPage = lazy(() => import('@/pages/public/Cross/Login/LoginPage'));
+const LoginMfaPage = lazy(() => import('@/pages/public/Cross/LoginMfa/LoginMfaPage'));
+const NotFoundPage = lazy(() => import('@/pages/public/Cross/NotFound/NotFoundPage'));
+const RegisterPage = lazy(() => import('@/pages/public/Cross/Register/RegisterPage'));
+const RegisterSetupPage = lazy(
+  () => import('@/pages/public/Cross/RegisterSetup/RegisterSetupPage'),
+);
+const ResetPasswordPage = lazy(
+  () => import('@/pages/public/Cross/ResetPassword/ResetPasswordPage'),
+);
+const SendResetPasswordPage = lazy(
+  () => import('@/pages/public/Cross/SendResetPassword/SendResetPasswordPage'),
+);
+const UnauthorizedPage = lazy(() => import('@/pages/public/Cross/Unauthorized/UnauthorizedPage'));
 import AcademicRoutes from '@/routes/AcademicRoutes';
 import StudentRoutes from '@/routes/StudentRoutes';
 import TeacherRoutes from '@/routes/TeacherRoutes';
-import { Navigate, Route, Routes } from 'react-router';
 
 const IndexRoutes = () => {
   return (
