@@ -1,6 +1,7 @@
 import { MyDialog } from '@/components/Dialog';
 import { MyField } from '@/components/MyField';
 import { MySelect } from '@/components/Select';
+import { toaster } from '@/components/Toast';
 import { useCreateCampusMutation } from '@/features/Academic/CreateCampus/CreateCampusClient';
 import { useDialog } from '@/hooks/useDialog';
 import { STATES_OPTIONS } from '@/pages/protected/Academic/Campi/types/FullNameStates';
@@ -46,6 +47,11 @@ export const CreateCampusDialog = ({ children, ...rootProps }: DialogRootProps) 
   const { closeDialog, isOpen } = useDialog();
 
   function onSubmit(data: NewCampusProps) {
+    toaster.create({
+      type: 'loading',
+      title: 'Criando campus...',
+      id: 'creating-campus',
+    });
     mutate(
       {
         city: data.city,
@@ -57,8 +63,22 @@ export const CreateCampusDialog = ({ children, ...rootProps }: DialogRootProps) 
         onSuccess: () => {
           closeDialog(false);
           reset();
+          toaster.update('creating-campus', {
+            title: 'Campus criado!',
+            description: `Você já pode vê-lo na lista.`,
+            type: 'success',
+            closable: true,
+          });
           queryClient.invalidateQueries({
             queryKey: ['get-campi'],
+          });
+        },
+        onError() {
+          toaster.update('creating-campus', {
+            title: 'Erro ao criar campus!',
+            description: 'Por favor, tente novamente.',
+            type: 'error',
+            closable: true,
           });
         },
       },

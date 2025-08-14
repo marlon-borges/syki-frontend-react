@@ -84,7 +84,7 @@ export const MyToast = () => {
       {toast => (
         <Toast.Root
           className={twMerge(
-            'dark flex w-96 translate-y-(--y) animate-bt-in gap-3 rounded-xl bg-b-muted p-3 ring-1 transition-all data-[state=closed]:animate-bt-out',
+            'dark flex w-max translate-y-(--y) animate-bt-in gap-3 rounded-xl bg-b-muted p-3 ring-1 transition-all data-[state=closed]:animate-bt-out',
             toast.type === 'error'
               ? 'ring-s-error'
               : toast.type === 'success'
@@ -99,13 +99,13 @@ export const MyToast = () => {
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-b-emphasized">
             {IconByType(toast.type)}
           </div>
-          <div className="flex flex-col gap-1">
-            <Toast.Title className="text-sm font-medium text-t-default">
-              {toast.type === 'loading' ? 'Loading...' : toast.title}
+          <div className="flex min-h-8 w-full max-w-68 min-w-36 flex-col justify-center gap-1">
+            <Toast.Title asChild>
+              <p className="text-sm font-medium text-t-default">{toast.title}</p>
             </Toast.Title>
             <Show when={toast.description}>
-              <Toast.Description className="text-sm font-normal text-t-muted">
-                {toast.description}
+              <Toast.Description asChild>
+                <p className="text-sm font-normal text-t-muted">{toast.description}</p>
               </Toast.Description>
             </Show>
             <Show when={toast.action}>

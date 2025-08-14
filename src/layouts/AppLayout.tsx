@@ -3,6 +3,7 @@ import { Sidebar } from '@/components/sidebar/Sidebar';
 import { MyToast } from '@/components/Toast';
 import { useAuthContext } from '@/context/auth/useAuthContext';
 import { LayoutContextProvider } from '@/context/layout/useLayoutContext';
+import { NuqsAdapter } from 'nuqs/adapters/react-router/v7';
 import { Navigate, Outlet } from 'react-router';
 
 const AppLayout = () => {
@@ -10,7 +11,9 @@ const AppLayout = () => {
 
   return (
     <LayoutContextProvider>
-      {!isLoading && !isAuthenticated ? <Navigate to="/login" /> : <Layout />}
+      <NuqsAdapter>
+        {!isLoading && !isAuthenticated ? <Navigate to="/login" /> : <Layout />}
+      </NuqsAdapter>
     </LayoutContextProvider>
   );
 };

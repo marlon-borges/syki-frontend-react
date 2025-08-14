@@ -1,18 +1,14 @@
-import { Button } from '@/components/Button';
 import { IconButton } from '@/components/IconButton';
 import { ChartStudentsCapacity } from '@/pages/protected/Academic/Campi/components/ChartStudentsCapacity';
-import { IconDotsVertical, IconMapPin, IconPencil } from '@tabler/icons-react';
+import { IconDotsVertical, IconPencil, IconTrash } from '@tabler/icons-react';
 import type React from 'react';
 import { useState } from 'react';
 import placeholderCampusLogo from '@/assets/placeholder-campus-logo.svg';
 import { twMerge } from 'tailwind-merge';
 import { Dropdown } from '@/components/Dropdown';
-import { EditCampusDialog } from '@/pages/protected/Academic/Campi/components/EditCampusDialog';
-import { MyDialog } from '@/components/Dialog';
-import { createListCollection } from '@ark-ui/react';
-import { STATES_OPTIONS } from '@/pages/protected/Academic/Campi/types/FullNameStates';
+import { useDialog, type ListCollection } from '@ark-ui/react';
 import type { CampusOut } from '@/features/Academic/GetCampi/GetCampiClient';
-import { DeleteCampusDialog } from '@/pages/protected/Academic/Campi/components/DeleteCampusDialog';
+import { EditCampusDialog } from '@/pages/protected/Academic/Campi/components/EditCampusDialog';
 
 export interface CampusCardProps extends React.ComponentProps<'div'> {
   photoSrc?: string;
@@ -21,8 +17,7 @@ export interface CampusCardProps extends React.ComponentProps<'div'> {
   chartData: [students: number, capacity: number];
   fillRate: number;
   data: CampusOut;
-  onEdit?: () => void;
-  onDelete?: () => void;
+  statesCollection: ListCollection;
 }
 
 export const CampusCard = ({
@@ -31,46 +26,41 @@ export const CampusCard = ({
   state,
   chartData,
   fillRate,
-  onEdit,
-  onDelete,
   data,
+  statesCollection,
   ...divProps
 }: CampusCardProps) => {
   const [imgLoading, setImageLoading] = useState<boolean>(false);
   const [imgBackdropLoading, setImgBackdropLoading] = useState<boolean>(false);
-  const [hovered, setHovered] = useState<boolean>(false);
-  const [opened, setOpened] = useState<boolean>(false);
 
-  const stateCollection = createListCollection({
-    items: STATES_OPTIONS,
-  });
+  const { open, setOpen } = useDialog();
 
   return (
     <div
-      className="relative h-fit max-w-64 min-w-56 flex-1 overflow-hidden rounded-xl border border-s-default bg-b-default transition-all duration-150 hover:shadow-bottom-300"
+      className="relative h-fit max-w-64 min-w-60 flex-1 overflow-hidden rounded-xl border border-s-default bg-b-default transition-all duration-150 hover:shadow-bottom-300"
       {...divProps}
     >
-      <figure className="relative z-[0] max-h-20 min-h-20 overflow-hidden">
+      <figure className="relative z-[0] max-h-18 min-h-18 overflow-hidden">
         <div className="absolute inset-0 bottom-0 z-[1] bg-linear-to-t from-b-default from-10% to-b-default/0 backdrop-blur-xs"></div>
         {!imgBackdropLoading && (
           <img
             src={placeholderCampusLogo}
             alt="institution-backdrop-logo"
-            className="z-0 w-full opacity-15"
+            className="z-0 w-full opacity-8"
           />
         )}
         <img
           src={photoSrc}
           onLoad={() => setImgBackdropLoading(true)}
           alt="institution-backdrop-logo"
-          className="z-0 w-full opacity-15"
+          className="z-0 w-full opacity-8"
         />
       </figure>
       {!imgLoading && (
         <img
           src={placeholderCampusLogo}
           alt="campus-placeholder-logo"
-          className="absolute -mt-16 ml-4 size-16 rounded-lg border border-b-default shadow-bottom-200"
+          className="absolute -mt-14 ml-4 size-14 rounded-lg border-2 border-b-default shadow-bottom-200"
         />
       )}
       <img
@@ -79,23 +69,44 @@ export const CampusCard = ({
         loading="lazy"
         alt="campus-logo"
         className={twMerge(
-          'absolute -mt-16 ml-4 size-16 rounded-lg border border-b-default shadow-bottom-200',
+          'absolute -mt-14 ml-4 size-14 rounded-lg border-2 border-b-default shadow-bottom-200',
           !imgLoading ? 'opacity-0' : 'opacity-100',
         )}
       />
-      <div className="space-y-1.5 px-4 pt-2 transition-all duration-150">
-        <p
-          className={twMerge(
-            'overflow-hidden font-display text-lg font-semibold text-t-default transition-all duration-150',
-            hovered ? 'line-clamp-2 max-h-16' : 'line-clamp-1 max-h-7',
-          )}
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-        >
+      <Dropdown.Root>
+        <Dropdown.Trigger>
+          <IconButton
+            icon={IconDotsVertical}
+            variant="outline"
+            color="neutral"
+            size="small"
+            classNames="absolute top-4 right-4"
+          />
+        </Dropdown.Trigger>
+        <Dropdown.Content>
+          <EditCampusDialog
+            data={data}
+            stateCollection={statesCollection}
+            open={open}
+            onOpenChange={v => setOpen(v.open)}
+            onSuccess={() => setOpen(false)}
+          >
+            <div>
+              <Dropdown.Item value="edit-campus" icon={IconPencil}>
+                Editar
+              </Dropdown.Item>
+            </div>
+          </EditCampusDialog>
+          <Dropdown.Item value="delete-campus" variant="error" icon={IconTrash}>
+            Excluir
+          </Dropdown.Item>
+        </Dropdown.Content>
+      </Dropdown.Root>
+      <div className="space-y-1 px-4 pt-2 transition-all duration-150">
+        <p className="line-clamp-1 overflow-hidden font-display text-lg font-semibold text-t-default transition-all duration-150">
           {name}
         </p>
         <span className="flex items-center gap-1.5 text-sm font-normal text-t-muted">
-          <IconMapPin stroke={2.25} size={18} className="shrink-0 text-t-subtle!" />{' '}
           <div className="flex min-w-0">
             <span className="truncate">{`${state[0]}`}</span>
             <span className="whitespace-nowrap">{`, ${state[1]}`}</span>
@@ -103,51 +114,6 @@ export const CampusCard = ({
         </span>
       </div>
       <ChartStudentsCapacity fillRate={fillRate} chartData={chartData} />
-      <div className="flex items-center gap-2 px-2 pt-1 pb-2">
-        <EditCampusDialog
-          stateCollection={stateCollection}
-          data={data}
-          open={opened}
-          onSuccess={() => setOpened(false)}
-          onOpenChange={v => setOpened(v.open)}
-        >
-          <MyDialog.Context>
-            {context => (
-              <>
-                <Button
-                  variant="light"
-                  color="neutral"
-                  size="small"
-                  classNames="flex-1"
-                  onClick={() => context.setOpen(true)}
-                >
-                  Editar
-                </Button>
-                <Dropdown.Root>
-                  <Dropdown.Trigger>
-                    <IconButton
-                      icon={IconDotsVertical}
-                      variant="light"
-                      color="neutral"
-                      size="small"
-                    />
-                  </Dropdown.Trigger>
-                  <Dropdown.Content>
-                    <Dropdown.Item
-                      value="edit-campus"
-                      icon={IconPencil}
-                      onClick={() => context.setOpen(true)}
-                    >
-                      Editar
-                    </Dropdown.Item>
-                    <DeleteCampusDialog name={name} />
-                  </Dropdown.Content>
-                </Dropdown.Root>
-              </>
-            )}
-          </MyDialog.Context>
-        </EditCampusDialog>
-      </div>
     </div>
   );
 };

@@ -1,18 +1,34 @@
-import AcademicPeriodsPage from '@/pages/protected/Academic/AcademicPeriods/AcademicPeriodsPage';
-import CampiPage from '@/pages/protected/Academic/Campi/CampiPage';
-import ClassDetailsPage from '@/pages/protected/Academic/Classes/ClassDetails/ClassDetailsPage';
-import ClassesPage from '@/pages/protected/Academic/Classes/ClassesPage';
-import ClassroomsPage from '@/pages/protected/Academic/Classrooms/ClassroomsPage';
-import CourseCurriculumsPage from '@/pages/protected/Academic/CourseCurriculums/CourseCurriculumsPage';
-import CourseOfferingsPage from '@/pages/protected/Academic/CourseOfferings/CourseOfferingsPage';
-import CoursesPage from '@/pages/protected/Academic/Courses/CoursesPage';
-import DisciplinesPage from '@/pages/protected/Academic/Disciplines/DisciplinesPage';
-import EnrollmentPeriodsPage from '@/pages/protected/Academic/EnrollmentPeriods/EnrollmentPeriodsPage';
-import InsightsPage from '@/pages/protected/Academic/Insights/InsightsPage';
-import NotificationsPage from '@/pages/protected/Academic/Notifications/NotificationsPage';
-import StudentsPage from '@/pages/protected/Academic/Students/StudentsPage';
-import TeachersPage from '@/pages/protected/Academic/Teachers/TeachersPage';
+import { lazy } from 'react';
 import { Route } from 'react-router';
+import CampiPage from '@/pages/protected/Academic/Campi/CampiPage';
+const ClassDetailsPage = lazy(
+  () => import('@/pages/protected/Academic/Classes/ClassDetails/ClassDetailsPage'),
+);
+const ClassesPage = lazy(() => import('@/pages/protected/Academic/Classes/ClassesPage'));
+const ClassroomsPage = lazy(() => import('@/pages/protected/Academic/Classrooms/ClassroomsPage'));
+const CourseCurriculumsPage = lazy(
+  () => import('@/pages/protected/Academic/CourseCurriculums/CourseCurriculumsPage'),
+);
+const CourseOfferingsPage = lazy(
+  () => import('@/pages/protected/Academic/CourseOfferings/CourseOfferingsPage'),
+);
+const CoursesPage = lazy(() => import('@/pages/protected/Academic/Courses/CoursesPage'));
+const DisciplinesPage = lazy(
+  () => import('@/pages/protected/Academic/Disciplines/DisciplinesPage'),
+);
+const EnrollmentPeriodsPage = lazy(
+  () => import('@/pages/protected/Academic/EnrollmentPeriods/EnrollmentPeriodsPage'),
+);
+const InsightsPage = lazy(() => import('@/pages/protected/Academic/Insights/InsightsPage'));
+const NotificationsPage = lazy(
+  () => import('@/pages/protected/Academic/Notifications/NotificationsPage'),
+);
+const StudentsPage = lazy(() => import('@/pages/protected/Academic/Students/StudentsPage'));
+const TeachersPage = lazy(() => import('@/pages/protected/Academic/Teachers/TeachersPage'));
+
+const AcademicPeriodsPage = lazy(
+  () => import('@/pages/protected/Academic/AcademicPeriods/AcademicPeriodsPage'),
+);
 
 export default function AcademicRoutes() {
   return (

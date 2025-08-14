@@ -171,7 +171,7 @@ const Trigger = ({ icon: Icon, className, size, ...valueProps }: SelectTriggerPr
         )}
         <Select.ValueText
           {...valueProps}
-          className={twMerge('w-full px-0.5 text-left', className)}
+          className={twMerge('w-0 flex-1 truncate px-0.5 text-left', className)}
         />
         <Select.Indicator className={twMerge('transition-all data-[state=open]:rotate-180')}>
           <IconChevronDown size={18} />
@@ -267,7 +267,7 @@ type ListSelectionItem = {
 export interface MySelectProps {
   collection: MySelectCollectionList;
   invalid?: boolean;
-  defaultValue?: string[];
+  defaultValue?: string[] | undefined;
   classNames?: {
     MainRoot?: string;
     Root?: string;
@@ -286,6 +286,8 @@ export interface MySelectProps {
   hasPortal?: boolean;
   onValueChange?: (value: Select.ValueChangeDetails) => void;
   value?: string[];
+  size?: 'small' | 'default' | 'large';
+  disabled?: boolean;
 }
 
 export interface MySelectCollectionList extends Select.ListCollection {
@@ -305,28 +307,30 @@ export const MySelect = ({
   defaultValue,
   onValueChange,
   value,
+  size,
+  disabled,
 }: MySelectProps) => {
   return (
-    <BaseSelect.MainRoot className={classNames?.MainRoot} invalid={invalid}>
+    <BaseSelect.MainRoot className={classNames?.MainRoot} invalid={invalid} disabled={disabled}>
       <BaseSelect.Root
         collection={collection}
         className={classNames?.Root}
         onValueChange={onValueChange}
         value={value}
-        defaultValue={defaultValue}
+        defaultValue={defaultValue && defaultValue}
       >
         <Show when={!!Label}>
           <BaseSelect.Label className={classNames?.Label}>{Label}</BaseSelect.Label>
         </Show>
         <BaseSelect.HookFormRegister {...register} />
-        <BaseSelect.Trigger placeholder={placeholder} className={classNames?.Trigger} />
+        <BaseSelect.Trigger placeholder={placeholder} size={size} className={classNames?.Trigger} />
         <BaseSelect.Content hasPortal={hasPortal} className={classNames?.Content}>
           {collection.items.map((item, i) => (
             <BaseSelect.Item
               key={`select-item-${i}`}
               item={item}
               icon={item.icon}
-              size={item.size}
+              size={size}
               className={classNames?.Item}
             >
               {item.label}

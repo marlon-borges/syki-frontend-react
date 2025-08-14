@@ -7,7 +7,7 @@ import {
   type FieldLabelProps,
   type FieldRootProps,
 } from '@ark-ui/react';
-import type { TablerIcon } from '@tabler/icons-react';
+import { IconLoader2, type TablerIcon } from '@tabler/icons-react';
 import { cva } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
@@ -30,6 +30,7 @@ interface InputProps extends FieldInputProps {
   icon?: TablerIcon;
   sizes?: 'small' | 'default' | 'large';
   ref?: React.Ref<HTMLInputElement>;
+  isLoading?: boolean;
 }
 
 const Input = (props: InputProps) => {
@@ -80,7 +81,7 @@ const Input = (props: InputProps) => {
 
           return (
             <>
-              <Show when={props.icon}>
+              <Show when={props.icon && !props.isLoading}>
                 {props.icon && (
                   <props.icon
                     stroke="2.25"
@@ -92,6 +93,13 @@ const Input = (props: InputProps) => {
                     size={18}
                   />
                 )}
+              </Show>
+              <Show when={props.isLoading}>
+                <IconLoader2
+                  stroke={2.25}
+                  size={18}
+                  className={twMerge('animate-spin', iconCva({ state: 'default' }))}
+                />
               </Show>
               <Field.Input
                 {...props}

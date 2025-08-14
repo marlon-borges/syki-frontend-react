@@ -19,9 +19,9 @@ export const ChartStudentsCapacity = ({ chartData, fillRate }: ChartStudentsCapa
   const getColorBarByFillRate =
     fillRate <= 50
       ? 'var(--color-orange-400)'
-      : fillRate >= 51 && fillRate <= 90
+      : fillRate >= 51 && fillRate <= 89
         ? 'var(--color-green-500)'
-        : fillRate >= 91
+        : fillRate >= 90
           ? 'var(--color-red-500)'
           : 'var(--color-f-disabled)';
 
@@ -32,7 +32,7 @@ export const ChartStudentsCapacity = ({ chartData, fillRate }: ChartStudentsCapa
       placement="top"
       openDelay={150}
     >
-      <div className="mt-2 box-content h-1.5 px-4 pt-2 pb-2">
+      <div className="mt-2 box-content h-1.5 px-4 pt-2 pb-4">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             layout="vertical"
