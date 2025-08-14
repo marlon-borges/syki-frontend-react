@@ -30,13 +30,9 @@ const newCampusSchema = z.object({
 
 type NewCampusProps = z.infer<typeof newCampusSchema>;
 
-export const EditCampusDialog = ({
-  data,
-  stateCollection,
-  onSuccess,
-  children,
-  ...rootProps
-}: EditCampusDialogProps) => {
+export const EditCampusDialog = (props: EditCampusDialogProps) => {
+  const { data, stateCollection, onSuccess, children, ...rootProps } = props;
+
   const { handleSubmit, formState, register, reset, watch, setValue } = useForm<NewCampusProps>({
     resolver: zodResolver(newCampusSchema),
     defaultValues: {

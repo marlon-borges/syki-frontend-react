@@ -1,21 +1,40 @@
 import { useGetCampi, type CampusOut } from '@/features/Academic/GetCampi/GetCampiClient';
-import { CampusCard } from '@/pages/protected/Academic/Campi/components/CampusCard';
-import {
-  IconBuildingEstate,
-  IconChevronDown,
-  IconFilter2,
-  IconPlus,
-  IconSearch,
-} from '@tabler/icons-react';
+import { IconBuildingEstate, IconPlus, IconZoomQuestion } from '@tabler/icons-react';
 import { EmptyState } from '@/components/EmptyState';
 import { Show } from '@/components/Show';
-import { Button } from '@/components/Button';
-import { MyField } from '@/components/MyField';
-import { CreateCampusDialog } from '@/pages/protected/Academic/Campi/components/CreateCampusDialog';
-import { Filter } from '@/components/filter/Filter';
+import { createListCollection } from '@ark-ui/react';
+import { STATES_OPTIONS } from '@/pages/protected/Academic/Campi/types/FullNameStates';
+import React, { useRef, useState } from 'react';
+import { CampusGridList } from '@/pages/protected/Academic/Campi/components/CampusGridList';
+import {
+  ToolbarFilters,
+  type ToolbarFiltersRef,
+} from '@/pages/protected/Academic/Campi/components/ToolbarFilters';
 
 const CampiPage = () => {
   const { data, isLoading, isError, error } = useGetCampi();
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [filteredCampus, setFilteredCampus] = useState<CampusOut[]>([]);
+  const toolbarRef = useRef<ToolbarFiltersRef>(null);
+
+  React.useEffect(() => {
+    if (searchTerm) {
+      setFilteredCampus(
+        data?.filter(campus => campus.name.toLowerCase().includes(searchTerm.toLowerCase())) || [],
+      );
+    } else {
+      setFilteredCampus(data || []);
+    }
+  }, [data, searchTerm]);
+
+  const handleClearSearch = () => {
+    setSearchTerm('');
+    toolbarRef.current?.clearSearch();
+  };
+
+  const statesCollection = createListCollection({
+    items: STATES_OPTIONS,
+  });
 
   if (isLoading) {
     return <div>Carregando campi...</div>;
@@ -28,24 +47,7 @@ const CampiPage = () => {
   return (
     <>
       <section className="container mx-auto p-6">
-        <nav className="mb-4 flex items-center gap-4">
-          <MyField.Root className="max-w-3xs">
-            <MyField.Input icon={IconSearch} placeholder="Pesquisar..." />
-          </MyField.Root>
-          <Button variant="outline" color="neutral" rightIcon={IconChevronDown}>
-            Ordenar por
-          </Button>
-          <Filter>
-            <Button variant="outline" color="neutral" leftIcon={IconFilter2}>
-              Filtros
-            </Button>
-          </Filter>
-          <div className="flex w-full flex-1 justify-end">
-            <CreateCampusDialog>
-              <Button leftIcon={IconPlus}>Novo campus</Button>
-            </CreateCampusDialog>
-          </div>
-        </nav>
+        <ToolbarFilters onSearchTerm={v => setSearchTerm(v)} ref={toolbarRef} />
         <Show when={data?.length === 0}>
           <div className="flex w-full items-center justify-center pt-32">
             <EmptyState
@@ -59,21 +61,22 @@ const CampiPage = () => {
             />
           </div>
         </Show>
-        <div className="flex w-full flex-wrap gap-4">
-          {data?.map((campus: CampusOut) => {
-            return (
-              <CampusCard
-                key={campus.id}
-                name={campus.name}
-                state={[campus.city, campus.state]}
-                fillRate={campus.fillRate}
-                chartData={[campus.students, campus.capacity]}
-                onDelete={() => {}}
-                data={campus}
+        <Show when={filteredCampus?.length === 0}>
+          <div className="flex w-full items-center justify-center pt-32">
+            <div className="animate-bt-in">
+              <EmptyState
+                icon={IconZoomQuestion}
+                title="Nenhum campus encontrado"
+                description="Altere o termo de busca e tente novamente."
+                hasSecondaryAction={true}
+                hasAction={false}
+                secondaryActionText="Limpar busca"
+                onSecondaryAction={handleClearSearch}
               />
-            );
-          })}
-        </div>
+            </div>
+          </div>
+        </Show>
+        <CampusGridList campuses={filteredCampus} statesCollection={statesCollection} />
       </section>
     </>
   );
