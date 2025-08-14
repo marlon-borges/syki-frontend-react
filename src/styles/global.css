@@ -161,10 +161,10 @@
 
   --animate-rl-out: rl-out 100ms cubic-bezier(0.3, 0, 0.8, 0.15) forwards;
 
-  --animate-backdrop-in: backdrop-in 250ms cubic-bezier(0.05, 0.7, 0.1, 1);
+  --animate-backdrop-in: backdrop-in 350ms cubic-bezier(0.05, 0.7, 0.1, 1);
   --animate-backdrop-out: backdrop-out 250ms cubic-bezier(0.3, 0, 0.8, 0.15);
 
-  --animate-dialog-slide-in: dialog-slide-in 250ms cubic-bezier(0.05, 0.7, 0.1, 1);
+  --animate-dialog-slide-in: dialog-slide-in 350ms cubic-bezier(0.05, 0.7, 0.1, 1);
   --animate-dialog-slide-out: dialog-slide-out 250ms cubic-bezier(0.3, 0, 0.8, 0.15);
 
   @keyframes dialog-slide-in {
