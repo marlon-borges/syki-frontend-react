@@ -1,54 +1,71 @@
-import { useGetCampi, type CampusOut } from '@/features/Academic/GetCampi/GetCampiClient';
+import { useGetCampi } from '@/features/Academic/GetCampi/GetCampiClient';
 import { IconBuildingEstate, IconPlus, IconZoomQuestion } from '@tabler/icons-react';
 import { EmptyState } from '@/components/EmptyState';
 import { Show } from '@/components/Show';
 import { createListCollection } from '@ark-ui/react';
 import { STATES_OPTIONS } from '@/pages/protected/Academic/Campi/types/FullNameStates';
-import React, { useRef, useState } from 'react';
-import { CampusGridList } from '@/pages/protected/Academic/Campi/components/CampusGridList';
+import { lazy, Suspense, useMemo, useRef, useState } from 'react';
 import {
   ToolbarFilters,
   type ToolbarFiltersRef,
 } from '@/pages/protected/Academic/Campi/components/ToolbarFilters';
+import { useQueryState } from 'nuqs';
+
+const CampusGridList = lazy(
+  () => import('@/pages/protected/Academic/Campi/components/CampusGridList'),
+);
 
 const CampiPage = () => {
-  const { data, isLoading, isError, error } = useGetCampi();
+  const { data, isLoading } = useGetCampi();
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [filteredCampus, setFilteredCampus] = useState<CampusOut[]>([]);
   const toolbarRef = useRef<ToolbarFiltersRef>(null);
+  const [queryCity, setQueryCity] = useQueryState('city');
+  const [queryState, setQueryState] = useQueryState('state');
 
-  React.useEffect(() => {
+  const filteredCampus = useMemo(() => {
+    let filtered = data || [];
     if (searchTerm) {
-      setFilteredCampus(
-        data?.filter(campus => campus.name.toLowerCase().includes(searchTerm.toLowerCase())) || [],
-      );
-    } else {
-      setFilteredCampus(data || []);
+      filtered = filtered.filter(campus => {
+        return campus.name.toLowerCase().includes(searchTerm.toLowerCase());
+      });
     }
-  }, [data, searchTerm]);
+    if (queryState) {
+      filtered = filtered.filter(campus => campus.state === queryState);
+    }
+    if (queryCity) {
+      filtered = filtered.filter(campus => campus.city === queryCity);
+    }
+    return filtered;
+  }, [queryCity, queryState, searchTerm, data]);
 
+  // Limpar a busca enviando para o toolbarRef via imperativeHandle
   const handleClearSearch = () => {
     setSearchTerm('');
     toolbarRef.current?.clearSearch();
+    setQueryCity(null);
+    setQueryState(null);
   };
 
   const statesCollection = createListCollection({
     items: STATES_OPTIONS,
   });
 
-  if (isLoading) {
-    return <div>Carregando campi...</div>;
-  }
-
-  if (isError) {
-    return <div>Erro ao carregar os campi: {error?.message}</div>;
-  }
+  // if (isError) {
+  //   return <div>Erro ao carregar os campi: {error?.message}</div>;
+  // }
 
   return (
     <>
       <section className="container mx-auto p-6">
-        <ToolbarFilters onSearchTerm={v => setSearchTerm(v)} ref={toolbarRef} />
-        <Show when={data?.length === 0}>
+        <ToolbarFilters
+          onSearchTerm={v => setSearchTerm(v)}
+          ref={toolbarRef}
+          data={data}
+          onClearFilters={handleClearSearch}
+          queryCity={queryCity}
+          queryState={queryState}
+        />
+        <Show when={data?.length === 0 && !isLoading}>
           <div className="flex w-full items-center justify-center pt-32">
             <EmptyState
               icon={IconBuildingEstate}
@@ -61,7 +78,7 @@ const CampiPage = () => {
             />
           </div>
         </Show>
-        <Show when={filteredCampus?.length === 0}>
+        <Show when={filteredCampus?.length === 0 && !isLoading}>
           <div className="flex w-full items-center justify-center pt-32">
             <div className="animate-bt-in">
               <EmptyState
@@ -70,13 +87,15 @@ const CampiPage = () => {
                 description="Altere o termo de busca e tente novamente."
                 hasSecondaryAction={true}
                 hasAction={false}
-                secondaryActionText="Limpar busca"
+                secondaryActionText="Limpar filtros"
                 onSecondaryAction={handleClearSearch}
               />
             </div>
           </div>
         </Show>
-        <CampusGridList campuses={filteredCampus} statesCollection={statesCollection} />
+        <Suspense fallback={<div>Carregando campi...</div>}>
+          <CampusGridList campuses={filteredCampus} statesCollection={statesCollection} />
+        </Suspense>
       </section>
     </>
   );
