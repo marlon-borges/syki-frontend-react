@@ -34,6 +34,8 @@ interface InputProps extends FieldInputProps {
 }
 
 const Input = (props: InputProps) => {
+  const { isLoading, ...restProps } = props;
+
   const inputCva = cva(
     [
       'placeholder:text-t-subtle border-s-default rounded-lg border text-sm focus:border-neutral-600 focus:ring-2 focus:ring-neutral-200 focus:ring-offset-2 focus:ring-offset-b-default focus:outline-none',
@@ -81,9 +83,9 @@ const Input = (props: InputProps) => {
 
           return (
             <>
-              <Show when={props.icon && !props.isLoading}>
-                {props.icon && (
-                  <props.icon
+              <Show when={restProps.icon && !isLoading}>
+                {restProps.icon && (
+                  <restProps.icon
                     stroke="2.25"
                     className={twMerge(
                       iconCva({
@@ -94,7 +96,7 @@ const Input = (props: InputProps) => {
                   />
                 )}
               </Show>
-              <Show when={props.isLoading}>
+              <Show when={isLoading}>
                 <IconLoader2
                   stroke={2.25}
                   size={18}
@@ -102,16 +104,16 @@ const Input = (props: InputProps) => {
                 />
               </Show>
               <Field.Input
-                {...props}
-                ref={props.ref}
+                {...restProps}
+                ref={restProps.ref}
                 className={twMerge(
                   'w-full',
                   inputCva({
                     state: state(),
-                    size: props.sizes,
-                    hasIcon: !!props.icon,
+                    size: restProps.sizes,
+                    hasIcon: !!restProps.icon,
                   }),
-                  props.className,
+                  restProps.className,
                 )}
               />
             </>
