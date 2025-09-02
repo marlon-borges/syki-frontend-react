@@ -1,5 +1,5 @@
 import type { CampusOut } from '@/features/Academic/GetCampi/GetCampiClient';
-import { CampusCard } from '@/pages/protected/Academic/Campi/components/CampusCard';
+import CampusCard from '@/pages/protected/Academic/Campi/components/CampusCard';
 import type { ListCollection } from '@ark-ui/react';
 
 interface CampusGridListProps {
@@ -7,7 +7,7 @@ interface CampusGridListProps {
   statesCollection: ListCollection;
 }
 
-export const CampusGridList = ({ campuses, statesCollection }: CampusGridListProps) => {
+const CampusGridList = ({ campuses, statesCollection }: CampusGridListProps) => {
   return (
     <div className="flex w-full flex-wrap gap-4">
       {campuses.map(campus => (
@@ -24,3 +24,5 @@ export const CampusGridList = ({ campuses, statesCollection }: CampusGridListPro
     </div>
   );
 };
+
+export default CampusGridList;

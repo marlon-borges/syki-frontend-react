@@ -2,7 +2,7 @@ import { IconButton } from '@/components/IconButton';
 import { ChartStudentsCapacity } from '@/pages/protected/Academic/Campi/components/ChartStudentsCapacity';
 import { IconDotsVertical, IconPencil, IconTrash } from '@tabler/icons-react';
 import type React from 'react';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import placeholderCampusLogo from '@/assets/placeholder-campus-logo.svg';
 import { twMerge } from 'tailwind-merge';
 import { Dropdown } from '@/components/Dropdown';
@@ -20,7 +20,7 @@ export interface CampusCardProps extends React.ComponentProps<'div'> {
   statesCollection: ListCollection;
 }
 
-export const CampusCard = ({
+const CampusCard = ({
   name,
   photoSrc = 'https://picsum.photos/200/200',
   state,
@@ -117,3 +117,5 @@ export const CampusCard = ({
     </div>
   );
 };
+
+export default memo(CampusCard);
